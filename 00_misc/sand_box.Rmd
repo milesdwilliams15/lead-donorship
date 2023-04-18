@@ -1,0 +1,407 @@
+---
+title: "Preliminary Exploration"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## About
+
+This code is used as a "sandbox" for exploring the data and making sense of it prior to going to the more formal analysis stage.
+
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(estimatr)
+library(texreg)
+library(coolorrr)
+set_palette()
+set_theme()
+```
+
+## The Data
+
+```{r}
+haven::read_dta(
+  here::here(
+    "01_data",
+    "Bermeo_IOTargetedDevelopment_repdata1.dta"
+  )
+) -> dt
+glimpse(dt)
+```
+
+## Make measures of DI and RN
+
+```{r}
+## A function to standardize values
+stand <- function(x) (x - mean(x, na.rm=T)) / sd(x, na.rm=T)
+## The objective function
+hat_Z <- function(X, w) {
+  
+  ## drop NAs
+  X <- na.omit(X)
+  ## standardize values
+  X <- apply(X, 2, function(x) stand(x))
+  ## the linear combination
+  Z <- X %*% w
+  ## the squared covariances
+  covs.sqrd <- apply(X, 2, function(x) cov(x, Z)^2)
+  ## return the negative of the sum of the squared covariances
+  opt <- -sum(covs.sqrd, na.rm = T)
+  opt
+}
+## To optimize the objective given data 'X'
+find_Z <- function(X) {
+  ## optimize with BFGS
+  out <- optim(
+  fn = hat_Z,
+  par = rep(0, len = ncol(X)),
+  X = X
+  )
+  ## the fitted linear combination
+  Z <- X %*% out$par
+  ## standardize and return
+  Z <- stand(Z)
+  c(Z)
+}
+```
+
+```{r}
+XDI <- cbind(
+  dt$lexports_lag,
+  dt$limports_lag,
+  dt$lsipri, 
+  dt$ldist,
+  dt$colony
+)
+XRN <- cbind(
+  dt$lgdpcap_lag,
+  dt$lpop_lag,
+  dt$ldisaster,
+  dt$fh,
+  dt$civwar_lag
+)
+dt$DI <- find_Z(XDI)
+dt$RN <- find_Z(XRN)
+
+dt <- dt %>%
+  group_by(recipient, year) %>%
+  mutate(
+    DI_share = (DI - min(DI, na.rm=T))/
+      sum(DI - min(DI, na.rm=T), na.rm=T)
+  ) %>%
+  ungroup()
+
+lm_robust(
+  lcommit3a ~ DI + RN,
+  fixed_effects = ~ donor + year,
+  data = dt
+) %>%
+  screenreg()
+```
+
+```{r}
+dt %>%
+  drop_na(year) %>%
+  filter(
+    recipient!=""
+  ) %>%
+  group_by(year, recipient) %>%
+  mutate(
+    median_commitment = median(dac3a_millions, na.rm=T),
+    top_diff = -diff(
+      sort(dac3a_millions, T)[1:2]
+    ),
+    hi_recipient = 
+      sum((dac3a_millions / sum(dac3a_millions, na.rm=T))^2,
+          na.rm=T),
+    aid_share = dac3a_millions / sum(dac3a_millions, na.rm=T)
+  ) %>%
+  group_by(year) %>%
+  mutate(
+    median_hi = median(hi_recipient, na.rm=T),
+    median_diff = median(
+      top_diff,
+      na.rm=T
+    ),
+    median_share = median(aid_share,na.rm=T),
+    gt_median_hi = hi_recipient > median_hi,
+    gt_median_diff =
+      (top_diff) > median_diff,
+    gt_median_share = aid_share > median_share,
+    lead_donor_year = 
+      (gt_median_hi * gt_median_share)
+  ) %>%
+  ungroup() -> dt
+```
+
+```{r}
+dt %>%
+  select(top_diff, gt_median_diff, dac3a_millions)%>%
+  arrange(desc(dac3a_millions))
+```
+
+
+```{r}
+lm_robust(
+  lead_donor_year ~ DI_share * RN,
+  fixed_effects = ~ donor + year,
+  data = dt
+) %>%
+  screenreg()
+```
+
+
+```{r}
+library(mgcv)
+gam_fit <- gam(
+  lead_donor_year ~ s(DI_share, RN) + donor + as.factor(year),
+  data = dt %>% drop_na(DI:RN) %>%
+    filter(year > 2000),
+  family = binomial,
+  method = "REML"
+)
+plot(gam_fit, view = c("DI_share", "RN"), scheme = 2)
+vis.gam(
+  gam_fit,
+  view = c("DI_share", "RN"),
+  theta = 200,
+  n.grid = 50,
+  lwd = 0.4
+)
+```
+
+
+## With original data
+
+```{r}
+final_data <- read_csv(
+  here::here("01_data", "final_data.csv")
+)
+```
+
+```{r}
+names(final_data)
+```
+
+```{r}
+roll_ave <- function(x) {
+  x <- xn <- c(NA, NA, x)
+  for(i in 3:length(x)) {
+    x[i] <- mean(xn[(i-2):i], na.rm=T)
+  }
+  x <- x[3:length(x)]
+  return(x)
+}
+
+## Define lead donorship bilaterally:
+final_data %>%
+  mutate(
+    ties = - ties,
+    need = - need
+  ) %>%
+  group_by(recipient, year) %>%
+  mutate(
+    aid_share = aid / sum(aid),
+    HI = sum(aid_share^2),
+    top_donor = (aid==max(aid)),
+    top_share = max(aid_share),
+    aid_1st = max(aid),
+    aid_2nd = sort(aid, decreasing = T)[2],
+    aid_diff = aid_1st - aid_2nd,
+    ## aid_share = aid / sum(aid),
+    ## aid_share_gt = aid_share > median(aid_share),
+    ## top_donor = (aid==max(aid))+0,
+    ## fst_aid = max(aid),
+    ## snd_aid = sort(aid, decreasing = T)[2],
+    ties_share = (ties - min(ties)) / sum(ties - min(ties))
+  ) %>%
+  ungroup %>%
+  
+  ## Steinwand's measure
+  mutate(
+    lead_donor_year = ifelse(
+      (HI > median(HI)) &
+        (aid_diff > median(aid_diff)) &
+        (aid_share > median(aid_share)) &
+        top_donor,
+      1, 0
+    )
+  ) %>%
+  arrange(year) %>%
+  group_by(donor, recipient) %>%
+  mutate(
+    lead_donor = roll_ave(lead_donor_year)
+  ) %>%
+  ungroup -> final_data
+```
+
+
+```{r}
+lm_robust(
+  ihs_aid ~ ties + need,
+  fixed_effect = ~ donor + year,
+  se_type = "stata",
+  clusters = paste0(donor, recipient),
+  data = final_data
+) %>%
+  screenreg(
+    include.ci = F
+  )
+```
+
+
+```{r}
+library(mgcv)
+gam_fit <- gam(
+  lead_donor ~ s(ties_share, need) + 
+    donor + as.factor(year) + 
+    s(num_dyad, bs = "re"),
+  data = final_data %>%
+    mutate(num_dyad = as.numeric(as.factor(dyad))),
+  method = "REML",
+  family = quasibinomial
+)
+vis.gam(
+  gam_fit,
+  view = c("need", "ties_share"),
+  theta = 25,
+  n.grid = 50,
+  lwd = 0.4
+)
+```
+
+
+```{r}
+pred_data <- expand_grid(
+  ties_share = seq(0, 1, len = 20),
+  need = seq(-2, 2, len = 20),
+  num_dyad = 1,
+  donor = "United States",
+  year = 2001
+)
+pred_data %>%
+  mutate(
+    pred = predict(gam_fit, newdata = ., type = "response")
+  ) -> pred_data
+ggplot(pred_data) +
+  aes(
+    x = need,
+    y = ties_share,
+    fill = pred
+  ) +
+  geom_tile(
+    color = "black",
+    size = 0.01
+  ) +
+  ggpal(
+    type = "diverging",
+    aes = "fill",
+    midpoint = 0.5,
+    breaks = c(0.25, 0.5, 0.75),
+    labels = scales::percent
+  ) +
+  labs(
+    x = expression(
+      "Recipient Need (" * nu[j] * ")"
+    ),
+    y = expression(
+      "Bilateral Ties (" * tau[i][j] * ")" 
+    ),
+    fill = "Likelihood of\nLead Donorship"
+  ) 
+```
+
+```{r}
+hhi <- function(x) {
+  tot <- sum(x, na.rm=T)
+  pct <- x / tot
+  ssp <- sum(pct^2, na.rm=T)
+  ssp # return
+}
+final_data %>%
+  group_by(
+    year, recipient
+  ) %>%
+  summarize(
+    lead_donor = max(lead_donor, na.rm=T),
+    ties_ssp = sum(ties_share^2, na.rm=T),
+    need = mean(need, na.rm=T)
+  ) -> agg_data
+```
+
+```{r}
+gam_fit2 <- gam(
+  lead_donor ~ s(I(-log(ties_ssp)), need) + 
+    as.factor(year) + 
+    s(num_dyad, bs = "re"),
+  data = agg_data %>%
+    mutate(num_dyad = as.numeric(as.factor(recipient))),
+  method = "REML",
+  family = binomial
+)
+vis.gam(
+  gam_fit2,
+  view = c("need", "ties_ssp"),
+  theta = 220,
+  n.grid = 50,
+  lwd = 0.4
+)
+
+```
+
+```{r}
+pred_data <- expand_grid(
+  ties_ssp = seq(0.01, 1, len = 20),
+  need = seq(-2, 2, len = 20),
+  num_dyad = 1,
+  year = 2001
+)
+pred_data %>%
+  mutate(
+    pred = predict(gam_fit2, newdata = ., type = "response")
+  ) -> pred_data
+ggplot(pred_data) +
+  aes(
+    x = need,
+    y = ties_ssp,
+    fill = pred
+  ) +
+  geom_tile(
+    color = "black",
+    size = 0.01
+  ) +
+  ggpal(
+    type = "diverging",
+    aes = "fill",
+    breaks = c(0.25, 0.5, .75),
+    labels = scales::percent,
+    midpoint = 0.5
+  ) +
+  labs(
+    x = expression(
+      "Recipient Need (" * nu[j] * ")"
+    ),
+    y = expression(
+      "Concentration of Ties [HHI(" * tau[i][j] * ")]" 
+    ),
+    fill = "Likelihood of\nLead Donorship"
+  ) 
+```
+
+```{r}
+ggplot(agg_data) +
+  aes(rank(ties_ssp), lead_donor) +
+  geom_jitter() +
+  stat_smooth(
+    method = glm,
+    method.args = list(family = binomial)
+  )
+hist((rank(agg_data$ties_ssp)))
+```
+

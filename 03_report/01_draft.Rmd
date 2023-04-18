@@ -1,0 +1,121 @@
+---
+output: 
+  stevetemplates::article:
+    fig_caption: true
+bibliography: ref.bib
+biblio-style: apsr
+title: "Cooperation or Competitive Equilibrium? The Determinants of Lead Donorship in International Development"
+thanks: "Replication files are available on the author's Github account (http://github.com/milesdwilliams15). **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: williamsmd@denison.edu."
+author:
+- name: Miles D. Williams
+  affiliation: Denison University
+abstract: "Is lead donorship the product of collaboration or of a competitive general equilibrium? The phenomenon of lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---has garnered attention for its proposed ability to foster greater coordination among donor governments by limiting inefficient donor competition and free-riding. But the pro-cooperation properties of lead donorship lie downstream from the strategic context that gives rise to it. Building on an existing theory that embeds lead donorship in a framework characterizing the public and private goods properties of international aid, this study shows that the observed pattern of lead donorship is consistent with uncooperative behavior. This is done using novel measures of donor foreign policy interest and recipient development need and a research design that helps to triangulate when and where aid produces public and private goods for donor governments."
+keywords: "foreign aid, lead donorship, development"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+# spacing: double
+endnote: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE,
+                      message=FALSE, warning=FALSE,
+                      fig.path='figs/',
+                      cache.path = '_cache/',
+                      fig.process = function(x) {
+                      x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+                      if (file.rename(x, x2)) x2 else x
+                      })
+```
+
+# Introduction
+
+Is lead donorship a product of collusion or of a competitive general equilibrium? This question has special relevance in light of recent efforts to understand the link between lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---and aid effectiveness. In this study, the case is made that lead donorship follows from *uncooperative* behavior rather than collusion. This novel finding is supported by new measures, a semi-parametric modeling approach, and by examining patterns in lead donorship at the recipient level.
+
+Understanding the mechanisms that give rise to lead donorship is important because of its deep connection to another phenomenon called aid fragmentation, which characterizes the extent to which a developing country receives aid from a diverse portfolio of donors. Past findings are mixed, but many propose that aid fragmentation may strain recipient bureaucratic capacity [@kanbur2006; @knackRahman2007], increase donor transaction costs [@anderson2012], and reduced donors' ability to use aid conditionality to spur positive development and governance reforms in recipients [@hernandez2017; @zeitz2021]. At the same time, others propose that lack of recipient choice (i.e., low fragmentation or the presence of a lead donor) can have negative effects, and that under the right conditions, fragmentation actually has pro-development and growth impacts [@gehringEtAl2017]. While a definitive statement on the effect of fragmentation remains elusive, most scholars agree that it matters for aid effectiveness. By extension so does lead donorship.
+
+@steinwand2015 was the first to propose the concept of lead donorship and argues that it arises for two principal reasons. If aid produces public goods for donor governments, lead donorship arises out of uncooperative behavior as the donor with the most to gain from promoting public goods takes the lead in providing aid while others reduce their own provision and pass the buck to the top donor. However, if aid produces private or rival goods, lead donorship arises out of collusive behavior as other donors forego competition and cede to the donor with the most to gain from a dominant relationship with a developing country the top position. 
+
+The arguments that buttress these claims are sound, but testing them empirically is challenging. In this study, I propose two composite measures that capture two key dimensions along which donor governments are supposed to based their aid allocations: *donor interest* and *recipient need*. These two sets of determinants have been the subject of long-running debates among IR scholars and political economists about whether selfish or selfless motives drive the modern practice of giving foreign aid. This literature is far too vast to cover here. The current consensus is that donor motives are much more nuanced that this two-dimensional dichotomy suggests. Indeed some argue that responding to recipient development need often aligns with donor self-interest [@bermeo2017; @bermeo2018].
+
+The complexity of donor motives means that these two dimensions of donor interest and recipient need are not separate but instead contextualize each other in the eyes of donor governments. Incorporating bargaining models of aid allocation [@bdms2009] with insights from the targeted development framework [@bermeo2017; @bermeo2018], the argument is made here that development interest will be strongest at the intersection of high donor interest and recipient need. In high need recipients with which donors share only weak ties, any public goods produced from aid will yield modest returns for the donor, increasing the temptation to pass the buck to other donors. In low need recipients with which donors share strong ties, the economic and geostrategic opportunities for donors will outweigh their concern about unwanted spillovers. Finally, in low need recipients with which donors share weak ties, greater wealth and political stability can signal greater opportunity and increase donor incentives to compete for a slice of the pie.
+
+This argument about the interaction of donor ties and recipient need implies the following competing hypotheses. If donors collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients (1) that have relatively low need and more diffuse ties with donors, (2) that have relatively low need and more concentrated ties with one or a few donors, and (3) that have high need but diffuse ties with donors. Conversely, if donors do not collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients that have high need and concentrated ties with one or a few donors.
+
+To construct the measures necessary to test these hypotheses I use a method that creates a linear combination of a set of covariates by maximizing the sum of the squared covariances between this linear combination and each individual component variable. I rely on two sets of measures to construct an index of donor ties with recipients and an index of recipient need. The first is composed of measures of bilateral trade, colonial past, bilateral distance, and military alliances. The second is composed of recipient level measures of average income, population size, ongoing civil war, the impact of natural disasters, and strength of democracy. Lead donorship is measured following a similar strategy to that outlined by @steinwand2015.
+
+To test the main predictions, a semi-parametric approach is adopted. The data are aggregated to the recipient-year level with lead donorship modeled within a generalized additive model or GAM framework using a logit link function with year fixed effects and random recipient effects. A joint smoothing function is used to map the interaction of a measure of donor tie concentration and level of recipient need to the probability of lead donorship.
+
+The results are consistent with the absence of donor collusion. Lead donorship has the greatest probability of occurrence in developing countries that have high need and that have bilateral ties concentrated with one or a few donor governments. Elsewhere in the data, the likelihood of lead donorship is substantially smaller. This suggests that when lead donorship does arise, the likely culprit is buckpassing behavior rather than collusive deference to a top donor.
+
+This finding matters for ongoing policy debates and raises important theoretical questions. From a policy perspective, the seeming failure to identify much collusive behavior among donors is frustrating in light of decades-long efforts to spur greater donor cooperation. From a theoretical perspective, systemic cooperation failure begs the question as to why un-collusive behavior is so enduring. Are there features of the strategic environment that donors and recipients inhabit that prevent cooperation? In addition, is aid effectiveness improved or worsened by virtue of when and where lead donorship emerges? These are important questions for future research to address.
+
+# Background
+
+[Provide some context for lead donorship and why it matters and what remains to be explained]
+
+Conceptually, lead donorship has a straightforward definition. According to @steinwand2015, lead donorship is an instance where a single donor has a long-term relationship with an aid recipient and is responsible for the greatest share of foreign aid said recipient receives. 
+
+Lead donorship is not quite the inverse of the concept of aid fragmentation, but is closely related to it. Though no consensus on the issue exists, a number of studies point to reasons that aid fragmentation and the absence of a lead donor have a deleterious effect on economic development in aid recipients.
+
+Some cite costs to recipient government administrative capacity as one mechanism through which fragmentation takes its toll. In a special handbook overview of the economics of foreign aid, @kanbur2006 writes:
+
+\bigskip
+
+> In a typical African country, there can be upwards of 20 aid agencies from different countries and multilateral agencies. The hard-pressed civil servants [of these African countries] spend much of their time managing the paper flow. At the political level, ministers have to spend a considerable amount of time in turn meeting with donor delegations (1,579).
+
+\bigskip
+
+As @kanbur2006 goes on to note, the time it takes recipient bureaucrats to engage with donor agencies comes at the cost of listening to domestic interest groups and those most familiar with local conditions and development needs. This may increase the likelihood of mismatches between the development goals of, and types of resources provided by, donors and the actual needs of recipients.
+
+Beyond excessive administrative burden, some scholars suggest fragmentation damages bureaucratic quality itself. @knackRahman2007 demonstrate via a game-theoretic model and cross-country panel data from 1982 to 2001 that an increase in aid fragmentation results in a significant decline in bureaucratic quality, as measured by the International Country Risk Guide (ICRG). The authors cite poaching as one of the key mechanisms driving this effect. Donor agencies often have to provide tangible evidence of project effectiveness, and to do so they have incentives to supplement the pay of especially talented local bureaucrats to function as consultants. As @knackRahman2007 note, this practice has incentive distorting effects in the pool of local staff and also draws the most talented civil servants away from responsibilities that arguably would have greater development impact. 
+
+Fragmentation enters the equation by way of the collective action problem poaching creates among donors: more donors equates to more poaching, leading to more poaching by individual donors to snatch up talented staff before other donors do the same. Fragmentation thereby accelerates the rate of poaching, draining the local talent pool even more than if only one or a few donors operated in a recipient.
+
+Outside of factors on the recipient side, @anderson2012 points to transaction costs on the donor side. He claims that fragmentation may increase the burden that donors face when interacting with recipients by preventing them from exploiting economies of scale. Results from Anderson's dyadic panel analysis of administrative costs associated with development programs by 23 DAC countries from 1984 to 2009 suggest that fragmentation leads to an estimated 2.5 billion US dollars in extra administrative burden. By reducing the efficiency by which total development funding maps to the actual implementation of development projects, fragmentation limits the overall impact of each additional dollar of aid a donor spends.
+
+Related to the problem of transaction costs, fragmentation may also weaken the credibility of aid conditionality. Some evidence suggests that foreign aid exercises its effect on development, not only or primarily through the development projects it supports themselves, but when donors place conditions on the receipt of funds. In this view, aid allocation functions as a form of political exchange [@buenoDeMesquitaSmith2009]. By conditioning their support on the adoption of pro-market economic and political reforms by recipients, donors can incentivize development. Though evidence remains far from conclusive, several studies provide compelling support for the view that aid conditionality in both bilateral and multilateral contexts has a positive economic impact in recipients [see @bearceTirone2010; @girod2012; @smetsKnack2016; @mollSmets2018].
+
+However, a number of intervening factors may limit the efficacy of conditionality. For instance, the so-called "Samaritan's Curse," or disutility incurred from cutting aid, can prevent donors from making credible commitments to impose conditions. These might result from bureaucratic incentives to move money out the door [@svensson2003], or when donors' strategic goals supersede their interest in promoting development [@bearceTirone2010; @girod2012; @kanbur2000; @kilby2009]. Conditionality further only has bite to the extent that recipient governments lack alternative sources of revenue [@girod2012].
+
+Aid fragmentation has direct links to both the Samaritan's Curse and recipient dependence. On both counts, the presence of donor competition implied by fragmentation is the chief culprit. This issue has taken on special relevance in light of China's expanding international development finance activities. China has a reputation for imposing few conditions on its aid relative to traditional DAC donors, and as a consequence multilateral development institutions such as the World Bank and bilateral donors such as the United States have reduced the number of conditions they impose, and changed the types of projects they support, in order to compete [@hernandez2017; @zeitz2021]. However, while much of the literature centers on the competitive challenge posed by China, traditional DAC donors remain far from united in their priorities and often harbor concerns about maintaining their interests and influence *vis*-$\grave{a}$-*vis* each other as well [@steinwand2015]. Indeed, in the multi-donor environment DAC countries have inhabited for decades, aid from the United States in Northern Africa can represent just as much a source of competitive pressure for France as infrastructure projects financed by the People's Republic of China in Sub-Saharan Africa.
+
+Competition, then, makes conditionality difficult to enforce for donors. Not only may donors suffer disutility from cutting aid by losing out on their foreign policy goals to competitors, but also the presence of many donors likely mitigates the economic cost to the recipient if a donor cuts aid.^[On the point of recipient dependence, it bears noting that a lack of fragmentation could be a double-edged sword. While it may improve a donor's leverage with a recipient government, research points to a possible link between aid fragmentation, aid volatility, and political violence. @guttingSteinwand2015 find that greater fragmentation limits exposure to negative aid shocks (sudden and substantial declines in aid revenue) and, hence, to the impact that such shocks can have on the incidence of violent conflict.] Thus, to the extent that it suggests greater donor competition in a recipient, aid fragmentation will limit the economic impact of foreign aid. 
+
+In sum, lead donorship should have direct relevance for international development. By reducing fragmentation in the aid supply to a given recipient, lead donorship may result in less administrative burden and damage to recipient bureaucratic capacity, reduced transaction costs for donors, enhanced credibility and bite of conditionality, and less waste due to donor competition.
+
+# Theory
+
+[This will probably need two sections. One describing Steinwand's predictions about lead donorship. The other describing when and where we should expect public or private goods to dominate donor decisions. For example, under what conditions might recipient need signal need versus economic opportunity for donors. Perhaps the theory here is that low need recipients present donors with greater economic opportunity such that even donors with weaker bilateral ties with a recipient still want to obtain private or rival goods by giving aid. This might be an explanation for why the effect of concentrated donor ties in a recipient is muted as recipient need declines (and thus economic opportunity increases?). ]
+
+One example of this is donor relationships with former colonies. Several studies show a strong pro-colonial bias in the aid allocation decisions of donor governments, and this finding is often attributed to neo-colonial aspirations by donors. By targeting economic assistance to former colonies, old colonial powers are supposed to exercise political influence absent formal colonial rule. However, colonial ties also make donor countries especially sensitive to problems rooted in underdevelopment in their former colonies. These ties increase the likelihood that negative spillovers due to poverty or conflict will have an impact on the population of the former colonizer. Thus, ex-colonies may be important targets of foreign aid, but for very different reasons.
+
+A similar logic holds with respect to recipient need. On the one hand, greater need may make recipients ideal targets for donors interested in leveraging aid-for-policy deals [@bdms2009]. At the same time, donor ties to recipients may reshape their perception of recipient need---away from seeing it as an opportunity and instead as a possible source of unwanted spillovers.
+
+This way of understanding how the significance of factors related to donor interest and recipient need contextualize each other is the primary motive for generating composite measures of each concept. By first reducing each to two variables, it is more tractable to quantify how their interaction influences donor behavior. Specifically, these measures make it possible to triangulate contexts where motives for donor giving will be primarily rooted in genuine interest in development promotion or in opportunistic efforts to exercise political influence to obtain policy deals and concessions from developing countries.
+
+# Hypotheses
+
+[I'll state my hypotheses here, probably with some fancy 2x2 table.]
+
+# Data and Design
+
+[I'll start by describing the empirical model and estimation strategy first. Then I'll discuss the data and the construction of the variables.]
+
+# Results
+
+[It's obvious what goes here]
+
+# Conclusion
+
+[Ditto]
+
+# References
+\setlength{\parindent}{-0.2in}
+\setlength{\leftskip}{0.2in}
+\setlength{\parskip}{8pt}
+\vspace*{-0.2in}
+\noindent
+
