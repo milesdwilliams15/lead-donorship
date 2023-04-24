@@ -32,7 +32,7 @@ haven::read_dta(
     "Bermeo_IOTargetedDevelopment_repdata1.dta"
   )
 ) -> dt
-glimpse(dt)
+#glimpse(dt)
 ```
 
 ## Make measures of DI and RN
@@ -244,7 +244,7 @@ final_data %>%
 
 ```{r}
 lm_robust(
-  ihs_aid ~ ties + need,
+  ihs_aid ~ ties * need,
   fixed_effect = ~ donor + year,
   se_type = "stata",
   clusters = paste0(donor, recipient),
@@ -264,8 +264,7 @@ gam_fit <- gam(
     s(num_dyad, bs = "re"),
   data = final_data %>%
     mutate(num_dyad = as.numeric(as.factor(dyad))),
-  method = "REML",
-  family = quasibinomial
+  method = "REML"
 )
 vis.gam(
   gam_fit,
@@ -337,13 +336,12 @@ final_data %>%
 
 ```{r}
 gam_fit2 <- gam(
-  lead_donor ~ s(I(-log(ties_ssp)), need) + 
+  lead_donor ~ s(I(log(ties_ssp)), need) + 
     as.factor(year) + 
     s(num_dyad, bs = "re"),
   data = agg_data %>%
     mutate(num_dyad = as.numeric(as.factor(recipient))),
-  method = "REML",
-  family = binomial
+  method = "REML"
 )
 vis.gam(
   gam_fit2,
@@ -379,7 +377,7 @@ ggplot(pred_data) +
   ggpal(
     type = "diverging",
     aes = "fill",
-    breaks = c(0.25, 0.5, .75),
+    breaks = c(0, 0.5, 1),
     labels = scales::percent,
     midpoint = 0.5
   ) +
