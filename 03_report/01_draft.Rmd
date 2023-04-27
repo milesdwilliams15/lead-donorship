@@ -21,6 +21,7 @@ endnote: no
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE,
+                      echo=FALSE,
                       message=FALSE, warning=FALSE,
                       fig.path='figs/',
                       cache.path = '_cache/',
@@ -28,6 +29,10 @@ knitr::opts_chunk$set(cache=TRUE,
                       x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
                       if (file.rename(x, x2)) x2 else x
                       })
+library(tidyverse)
+library(coolorrr)
+set_theme()
+set_palette()
 ```
 
 # Introduction
@@ -36,49 +41,221 @@ Is lead donorship a product of collusion or of a competitive general equilibrium
 
 Understanding the mechanisms that give rise to lead donorship is important because of its deep connection to another phenomenon called aid fragmentation, which characterizes the extent to which a developing country receives aid from a diverse portfolio of donors. Past findings are mixed, but many propose that aid fragmentation may strain recipient bureaucratic capacity [@kanbur2006; @knackRahman2007], increase donor transaction costs [@anderson2012], and reduced donors' ability to use aid conditionality to spur positive development and governance reforms in recipients [@hernandez2017; @zeitz2021]. At the same time, others propose that lack of recipient choice (i.e., low fragmentation or the presence of a lead donor) can have negative effects, and that under the right conditions, fragmentation actually has pro-development and growth impacts [@gehringEtAl2017]. While a definitive statement on the effect of fragmentation remains elusive, most scholars agree that it matters for aid effectiveness. By extension so does lead donorship.
 
-@steinwand2015 was the first to propose the concept of lead donorship and argues that it arises for two reasons. First, if aid produces public goods for donor governments, lead donorship arises out of uncooperative behavior as the donor with the most to gain from promoting public goods takes the lead in providing aid while others reduce their own provision and pass the buck to the top donor. Alternatively, if aid produces private or rival goods, lead donorship arises out of collusive behavior as other donors forego competition and cede to the donor with the most to gain from a dominant relationship with a developing country the top position. 
+@steinwand2015 was the first to propose the concept of lead donorship and argues that it arises for one of two reasons. First, if aid produces public goods for donor governments, lead donorship arises out of uncooperative behavior as the donor with the most to gain from promoting public goods takes the lead in providing aid while others reduce their own provision and pass the buck to the top donor. Alternatively, if aid produces private or rival goods, lead donorship arises out of collusive behavior as other donors forego competition and cede to the donor with the most to gain from a dominant relationship with a developing country the top position. 
 
 The arguments that buttress these claims are sound, but testing them empirically is challenging. In this study, I propose composite measures that capture two key dimensions along which donor governments are supposed to based their aid allocations: *donor interest* or *ties* with developing countries and *recipient need*. 
 
-Two hypotheses are proposed. If donors collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients (1) that have relatively low need and more diffuse ties with donors, (2) that have relatively low need and more concentrated ties with one or a few donors, and (3) that have high need but diffuse ties with donors. Conversely, if donors do not collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients that have high need and concentrated ties with one or a few donors.
+Two hypotheses are proposed. If donors collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients that have relatively low need and that have relative strong ties with a single donor. Conversely, if donors do not collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients that have high need and concentrated ties with one or a few donors. The first hypothesis is labelled the "collusion hypothesis" and the second the "elusive collusion hypothesis."
 
 These hypotheses follow from two assumptions about recipient need and donor interest. First, it is assumed that high levels of need correspond with greater donor emphasis on public goods provision. Conversely, lower levels of need correspond with opportunity to leverage private or rival goods. 
 
 Second, strong bilateral ties between a donor and recipient correspond with relatively high marginal returns from promoting either public or private goods. Meanwhile, weak bilateral ties correspond with low marginal returns from promoting public or private goods.
 
-Classic collective action models show that with public goods and differing marginal returns, selfish behavior among actors leads the actor with the highest marginal returns to bear the brunt of supplying the public good. Conversely, with private/rival goods, selfish behavior leads to crowding in as actors compete to maximize their returns. This will be the case regardless of differing marginal returns.
+Classic collective action models show that with public goods and differing marginal returns, selfish behavior among actors leads the actor with the highest marginal returns to bear the brunt of supplying the public good. Conversely, with private/rival goods, selfish behavior leads to crowding in as actors compete making it harder for the actor with the greatest relative returns to keep the top position.
 
 To construct the measures necessary to test these hypotheses I use a method that creates a linear combination of a set of covariates by maximizing the sum of the squared covariances between this linear combination and each individual component variable. I rely on two sets of measures to construct an index of donor ties with recipients and an index of recipient need. The first is composed of measures of bilateral trade, colonial past, bilateral distance, and military alliances. The second is composed of recipient level measures of average income, population size, ongoing civil war, the impact of natural disasters, and strength of democracy. Lead donorship is measured following a similar strategy to that outlined by @steinwand2015.
 
 To test the main predictions, a semi-parametric approach is adopted. The data are aggregated to the recipient-year level with lead donorship modeled within a generalized additive model or GAM framework using a logit link function with year fixed effects and random recipient effects. A joint smoothing function is used to map the interaction of a measure of donor tie concentration and level of recipient need to the probability of lead donorship.
 
-The results are consistent with the absence of donor collusion. Lead donorship has the greatest probability of occurrence in developing countries that have high need and that have bilateral ties concentrated with one or a few donor governments. Elsewhere in the data, the likelihood of lead donorship is substantially smaller. This suggests that when lead donorship does arise, the likely culprit is uncooperative buck-passing behavior rather than collusive deference to a top donor.
+The results provide strong support for the elusive collusion hypothesis. Lead donorship has the greatest probability of occurrence in developing countries that have high need and that have bilateral ties concentrated with one or a few donor governments. Elsewhere in the data, the likelihood of lead donorship is substantially smaller. This suggests that when lead donorship does arise, the likely culprit is uncooperative buck-passing behavior rather than collusive deference to a top donor.
 
-This finding matters for ongoing policy debates and raises important theoretical questions. From a policy perspective, the seeming failure to identify much collusive behavior among donors is frustrating in light of decades-long efforts to spur greater donor cooperation. From a theoretical perspective, systemic cooperation failure begs the question as to why un-collusive behavior is so enduring. Are there features of the strategic environment that donors and recipients inhabit that prevent cooperation? In addition, is aid effectiveness improved or worsened by virtue of when and where lead donorship emerges? These are important questions for future research to address.
+This finding matters for ongoing policy debates and raises important theoretical questions. From a policy perspective, the seeming failure to identify much collusive behavior among donors (at least at a macro level) is frustrating in light of decades-long efforts to spur greater donor cooperation. From a theoretical perspective, systemic cooperation failure begs the question as to why un-collusive behavior is so enduring. Are there features of the strategic environment that donors and recipients inhabit that prevent cooperation? In addition, is aid effectiveness improved or worsened by virtue of when and where lead donorship emerges? These are important questions for future research to address.
 
-# Background
+# Background on Lead Donorship
 
-The literature remains mixed on the impact of lead donorship for aid effectiveness, or the efficiency by which development resources from industrialized countries to developing countries translates into positive development outcomes. Whether positive or negative, most believe lead donorship matters, but the mechanisms that give rise to lead donorship remain understudied. Understanding why lead donorship occurs may help untangle its influence on aid effectiveness.
+According to @steinwand2015, lead donorship characterizes a scenario where a single donor has a long-term relationship with an aid recipient and is responsible for the greatest share of foreign aid received. Lead donorship matters for its supposed impact on development outcomes in aid recipient countries, but in Steinwand's [-@steinwand2015] telling, the context that gives rise to lead donorship matters, too.
 
-According to @steinwand2015, lead donorship characterizes a scenario where a single donor has a long-term relationship with an aid recipient and is responsible for the greatest share of foreign aid said recipient receives. Though not quite the inverse of the concept of aid fragmentation, lead donorship is closely related to it.
+The key factor contextualizing lead donorship is the public or rival nature of the goals donor governments use foreign aid to achieve. Industrialized countries use foreign aid as a multi-purpose foreign policy tool that can serve both as an instrument for promoting economic development and for providing donor governments with political influence, market access, and security. @steinwand2015 proposes that the former objective has public goods properties while the latter has rival goods properties.
 
-Lead donorship matters for its supposed impact on development outcomes in aid recipient countries. In Steinwand's [-@steinwand2015] telling, the presence or absence of a lead donor under different contexts may signal positive or negative outcomes.
+When dealing with public goods, lack of donor cooperation should manifest as free-riding or buck-passing behavior. A well-known game-theoretic finding in the supply of public goods is that the actor with the greatest marginal returns from a public good will end up bearing the greatest share of the burden in supplying it. By their very nature, public goods are nonrival and nonexcludable. That means one actor's enjoyment of the good does not come at the expense of another's, and no actor can be excluded from enjoying the good, even if they do not directly pay for it. This creates adverse incentives for all involved. Not only does each actor (regardless of its marginal returns) generally pay less for the public good than they would absent free-riding, but also the actors with lower marginal returns from the good will pay disproportionately less than the actor with the greatest marginal returns. 
 
-The key factor contextualizing lead donorship is the public or rival nature of the goods donor governments use foreign aid to achieve. It is a well-established fact that industrialized countries use foreign aid as a multi-purpose foreign policy tool. It can serve both as an instrument for promoting economic development and for providing donor governments with political influence and economic access.
+The welfare implications of free-riding are simple: all actors would be better off if they did not free-ride. As @steinwand2015 notes, in the context of foreign aid, "coordination in the provision of aid with public goods properties helps to reduce free-riding and increases aid levels, with ultimately positive results for development" (444-445). That means that cooperation actually increases aid fragmentation and thus lowers the likelihood of lead donorship.
 
-@steinwand2015 proposes that lead donorship emerges for one of two reasons: either (1) donor coordination or (2) a lack of coordination. In the first case, donor coordination drives lead donorship when aid produces private or rival goods for donors. In a rival goods context, uncooperative behavior manifests as donor competition as industrialized countries jockey for top donor status. This jockeying for the top position reduces the likelihood that a lead donor emerges. If one does emerge, coordination is the most probable explanation. That is, donors come to a collusive arrangement such that the donor with the greatest marginal returns from political influence and market access gets to enjoy the top position while other donors agree to limit their own aid allocation.
+The converse holds for rival goods. Here, lack of cooperation manifests as a race to the top that makes it harder for the actor with the greatest marginal returns from rival goods to maximize those returns. Ironically, the mechanisms that make actors with minimal marginal returns eager to pass the buck in the supply of public goods create an especially strong competitive imperative in the context of rival goods. The result is greater aid fragmentation and thus a lower likelihood of a lead donor. 
 
-In the second case, uncooperative behavior drives lead donorship in a public goods context. A well known feature of public goods models is that when there are differing marginal returns from the public good among actors, the actor with the greatest marginal returns will bear the greatest share of the burden in supplying the good. Thus, a lead donor has the greatest likelihood of emerging where a single donor has disproportionately high marginal returns from giving aid relative to other donors. Donor collusion, however, would limit lead donorship as donors agree to limit buck-passing behavior.
+Like free-riding, competition is inefficient from a donor welfare perspective because it leads donors to crowd in resources that could otherwise be used to achieve other goals. It may also be bad from a recipient development perspective because by expanding recipient choice, rents shift away from the donor in favor of the recipient government. But, as @steinwand2015 notes, if donors cooperate to limit competition, "[d]onor fragmentation decreases, lead donorship arises, but overall aid amounts fall" with the end result being less waste and overlap in aid projects and less opportunity for rent-seeking by recipient governments (445).
 
-The welfare...
+The logic of lead donorship and its connection to donor collusion is clear enough once explained, but empirical identification of why lead donorship emerges is quite the challenge. Because @steinwand2015 was the first to identify and wrestle with the concept of lead donorship, his work is a natural place to start when considering empirical evidence.
 
-# Theory
+The approach @steinwand2015 takes is novel and creative, but given the complexity of the issue it involves a number of moving parts. First, to delineate aid given primarily for public or private goods, @steinwand2015 disaggregates foreign aid by two main delivery channels: government-to-government and bypass aid. 
 
-[This will probably need two sections. One describing Steinwand's predictions about lead donorship. The other describing when and where we should expect public or private goods to dominate donor decisions. For example, under what conditions might recipient need signal need versus economic opportunity for donors. Perhaps the theory here is that low need recipients present donors with greater economic opportunity such that even donors with weaker bilateral ties with a recipient still want to obtain private or rival goods by giving aid. This might be an explanation for why the effect of concentrated donor ties in a recipient is muted as recipient need declines (and thus economic opportunity increases?). ]
+Before Steinwand, @deitrich2013 is among the first to note the possibility of different motives associated with these alternative forms of aid delivery. @deitrich2013 argues that while donor governments certainly are driven by non-development foreign policy goals, they do also care about responding to recipient country development need. She hypothesizes that donors should therefore be sensitive to recipient governance quality, calibrating their form of aid delivery to optimize the chances that aid reaches the populations in a recipient country it is meant to help. Specifically, she argues that donor countries will use the so-called "bypass" channel in inverse proportion to the quality of governance in a recipient. 
 
-One example of this is donor relationships with former colonies. Several studies show a strong pro-colonial bias in the aid allocation decisions of donor governments, and this finding is often attributed to neo-colonial aspirations by donors. By targeting economic assistance to former colonies, old colonial powers are supposed to exercise political influence absent formal colonial rule. However, colonial ties also make donor countries especially sensitive to problems rooted in underdevelopment in their former colonies. These ties increase the likelihood that negative spillovers due to poverty or conflict will have an impact on the population of the former colonizer. Thus, ex-colonies may be important targets of foreign aid, but for very different reasons.
+Bypass aid constitutes resources that are given to nongovernmental actors such as NGOs operating in recipients rather than through direct cooperation with the state bureaucracy. In poorly governed developing countries, donors may fear that aid will be lost to rent-seeking elites. This mistrust in turn leads them to target more aid through the bypass channel relative to the government-to-government channel. @deitrich2013 finds strong support for her claims, and later studies have found similar patterns when examining different aid sectors [@bermeo2017; @bermeo2018] and alternative measures of limited state capacity such as civil conflict [@everettTirone2021].
 
-A similar logic holds with respect to recipient need. On the one hand, greater need may make recipients ideal targets for donors interested in leveraging aid-for-policy deals [@bdms2009]. At the same time, donor ties to recipients may reshape their perception of recipient need---away from seeing it as an opportunity and instead as a possible source of unwanted spillovers.
+After separating aid by delivery channel, @steinwand2015 further applies spatial autoregressive models and proposes alternative hypotheses for the direction of the spatial correlation in donor giving on the basis of delivery channel and the presence of donor collusion. Specifically, if donors cooperate in the provision of public goods, donor reactivity to other-donor aid should be null when examining the bypass aid channel. However, if donors do not collude, then they should give less aid in inverse proportion to the giving of others due to free-riding.
+
+Conversely, if donors collude in private goods aid, donors should have a negative reaction to other-donor giving through the government-to-government channel. But, if donors do not cooperate, they should crowd in resources and thus give more aid in proportion to the giving of other donors through the same.
+
+Steinwand's findings only partially support these expectations. Most notably, the fine-grained distinction between bypass and government-to-government aid---that one is oriented toward public goods and the other private---does not hold up in the empirical analysis. In fact, @steinwand2015 finds evidence of competition in bypass aid, contrary to the claim that the bypass channel closely corresponds to public goods.
+
+However, @steinwand2015 does claim to recover evidence that lead donorship is linked to donor collusion. He finds that with lead donorship, a donor decreases its level of giving in proportion to the giving of others. Conversely, donors increase their level of giving in proportion to others in the absence of a lead donor. Importantly, at least from Steinwand's perspective, this finding comes from examining the government-to-government aid channel.
+
+The conclusion drawn from this analysis is that competition is the driving strategic concern in foreign aid allocation and that lead donorship is the solution. @steinwand2015 adds to this the observation that lead donorship has been on a secular decline over the past few decades, and he thus calls for greater efforts to promote lead donorship to reduce competitive waste.
+
+Without calling into question the soundness of Steinwand's empirical strategy, some caution in interpreting his results is warranted. In particular, the observation that with lead donorship the spatial correlation in donor giving is negative does not necessarily support the argument that lead donorship arises out of donor collusion. Steinwand notes that bypass aid is surprisingly tied to competition for rival goods. Is it not possible that government-to-government aid is partially linked to public goods? How do we know that the pattern Steinwand labels cooperation is not suggestive of free-riding? 
+
+The limitation of Steinwand's approach is that it relies heavily on aid delivery channels to help contextualize the meaning of lead donorship. But his own analysis fails to support a neat contrast between government and bypass aid on the basis of rival and public goods. If aid in general (regardless of delivery method) reflects a mix of both objectives, it is impossible to diagnose the meaning of donor reactions by the presence or absence of lead donorship. It may be that with lead donorship we observe a negative correlation between individual and other-donor giving due to collusion. It also may be that when and where lead donorship arises, it does because of free-riding. The observation of a negative spatial correlation in donor giving in the presence of a lead donor is consistent with both explanations. 
+
+In this study, an alternative empirical strategy is proposed. Rather than use variation in lead donorship to explain donor reactions to the giving of one another, it would be more useful to explain variation in lead donorship by way of measures that help capture variation in the publicness or rivalness of the goods donor governments get out of the their aid allocation. If lead donorship emerges primarily when and where the public goods properties of aid are greatest, and where marginal returns are concentrated in but one or a few donors, this would support the claim that lead donorship is the product of uncooperative buck-passing. Alternatively, if lead donorship emerges primarily when and where the rival goods properties of aid are greatest, and where marginal returns are concentrated in one or a few donors, this would support the claim that lead donorship is the product of donor collusion. The following section lays out this argument in more detail.
+
+# Triangulating Public and Rival Goods in Aid Allocation
+
+The motivations behind giving foreign aid have intrigued IR scholars and economists alike ever since the practice emerged in its modern form after World War II. Early contributions to the literature were divided with respect to whether the factors driving aid giving were primarily humanitarian or altruistic in nature, or else cynical, driven by the self-serving foreign policy, economic, and security goals of donors. McKinlay and Little (1979) set the tone for future studies by pitting measures of recipient need against measures of donor interest in their analysis of US aid data from 1960 to 1970. Future studies would adopt a similar approach (see Alesina and Dollar 2000; Maizels and Nissanke 1984; Schraeder, Hook, and Taylor 1998).
+
+Contemporary research has since moved away from the sharp dichotomy between recipient need and donor interest. Instead, scholars recognize that donor governments' motives are often mixed and vary over time. Existing studies point to a number of factors that correspond either with donor interest or recipient need as drivers of donor giving. Studies show that foreign aid is linked to donors' geostrategic goals, interest in promoting bilateral trade, combating global terrorism, maintaining influence over former colonies, gaining international prestige, complementing military deployments, and addressing the root causes of discontent and instability, to name but a few (Alesina and Dollar 2000; Bearce and Tirone 2010; Bermeo 2017; Kilby and Dreher 2010; Kisangani and Pickering 2015; Round and Odedokun 2004; and van der Veen 2011). 
+
+Given the numerous motives behind foreign aid, the more interesting question addressed by recent scholarship centers not on the question of *whether* donors are altruistic or self-serving, but instead on *when*. In one prominent example, Heinrich (2013) shows that when recipient policy choices have salience for donors, aid is driven by "selfish" donor motives. Alternatively, greater awareness of poverty in the recipient country increases "selfless" aid giving.
+
+Bermeo (2017, 2018) goes further, arguing that because of the increasing interconnections between industrialized and developing countries in a globalizing world, addressing recipient needs also serves the self-interest of donor governments. She shows this is especially true in proportion to the strength of the connections between an industrialized country donor and a developing country recipient. 
+
+Both Heinrich's (2013) and Bermeo's (2017, 2018) studies point to two variables that will help to triangulate the public or rival goods properties of foreign aid. The first is variation in the salience of recipient countries to donor governments. We might also label this as donor-recipient ties or as factors that determine the returns that donor governments get out of their aid allocation to a particular recipient. In Heinrich's telling, this concept relates to the salience of recipient policy deals to donors (e.g., donor foreign policy interest). But it also corresponds with the strength of donor-recipient connections that, for Bermeo, make responding to recipient need import for donors as well.
+
+While these views of the significance of donor-recipient ties seem to contradict, the second concept important to both scholars---recipient need---helps to resolve this contradiction. Indeed, both perspectives on the donor motives linked to donor-recipient ties may be true. However, when one or the other holds should be conditioned by recipient need. While Heinrich (2013) sees both donor interest and recipient need as *separate* variables, Bermeo (2017, 2018) sees them as *connected*. That is, returns from responding to recipient need vary in proportion to donor-recipient ties. Further, variation in recipient need colors the meaning of donor connections to recipients.
+
+One example of this is donor relationships with former colonies. Several studies show a strong pro-colonial bias in the aid allocation decisions of donor governments, and this finding is often attributed to the neo-colonial aspirations of donors (see Alesina and Dollar 2000). By targeting economic assistance to former colonies, old colonial powers are supposed to exercise political influence absent formal colonial rule. However, colonial ties also make donor countries especially sensitive to problems rooted in underdevelopment in their former colonies. These ties increase the likelihood that negative spillovers due to poverty or conflict will have an impact on the population of the former colonizer. Thus, ex-colonies may be important targets of foreign aid, but for a very different reason.
+
+A similar logic holds with respect to recipient need. Greater need may signal greater likelihood of instability and possible negative spillovers. But as recipient need declines, donors may see more *opportunity* than *threat* posed by the developing country. Without worry of civil wars, terrorism, or outbreaks of infectious disease, an increase in donor-recipient ties may instead signal greater returns from aid-for-policy deals (see Bueno de Mesquita and Smith 2009).
+
+This discussion points to a simple proposition, namely, that depth of recipient need interacts with the strength of donor-recipient connections to shape the kinds of goods donors get out of their aid allocation. As recipient need deepens, the public goods properties of aid should be more pronounced. Conversely, as recipient need becomes more shallow, the political opportunities that giving aid affords donors may take on greater salience, giving way to rival goods as donors vie for influence. Donor ties with recipients may in turn determine the returns that donors receive from their aid allocation.
+
+Of course, this characterization of how donor-recipient ties interact with recipient need is to paint with a broad brush indeed. But tractability is gained in exchange for exactness. The next section continues this discussion and lays out two alternative hypotheses for lead donorship given the interaction of recipient need and donor-recipient ties.
+
+# Hypotheses
+
+Returning to Steinwand's (2015) argument about lead donorship, variation in recipient need and donor-recipient ties points to two competing hypotheses. These competing hypotheses follow from two different scenarios, one where donor governments collude in the provision of foreign aid and the other where they fail to collude and thus engage in a mix of competition and buck-passing depending on the goods (public or rival) in question.
+
+Following Steinwand (2015), donor collusion implies a delineation of spheres of influence in a rival goods context and a mitigation of buck-passing or free-riding with public goods. This means lead donorship should arise with the greatest frequency when and where rival goods have disproportionate weight relative to public goods and where one donor obtains comparatively more marginal returns relative to other donors. Further, lead donorship should occur with less frequency with public goods, even if one donor obtains more marginal returns relative to others. This may be called the "collusion hypothesis" stated simply as:
+
+\bigskip
+
+> **H1 (Collusion)**: *Donor governments collude in the provision of foreign aid.*
+
+\bigskip
+
+Alternatively, the absence of collusion implies an absence of clear spheres of influence with rival goods and the presence of buck-passing with public goods. This means that lead donorship will have a low likelihood of arising with rival goods, even when one donor obtains disproportionate marginal returns. However, lead donorship will have a greater likelihood of arising with public goods, especially when one donor obtains greater marginal returns relative to others. We may call this the "elusive collusion hypothesis" because it holds that collusion eludes or remains absent in the aid allocations of donors.
+
+> **H2 (Elusive Collusion)**: *Donor governments do not collude in the provision of foreign aid.*
+
+Each hypothesis implies different patterns in lead donorship across developing countries. Figures 1 and 2 aid in the description of these patterns. Figure 1 shows the variation in lead donorship that we would observe with donor collusion. The x-axis shows variation in the level of recipient need, and by symmetry inverse variation in opportunity. The y-axis shows variation in the degree to which recipient ties with donors are relatively even or else concentrated in a single donor. Under collusion, lead donorship occurs with greatest frequency in the upper-left quadrant of the figure where recipient need is low and a single donor obtains greater marginal returns from private goods relative to other donors.
+
+```{r fig.height=4, fig.width=4, fig.cap="(Collusion) Expected variation in lead donorship if donor governments collude in the provision of foreign aid. Lead donorship should be concentrated where recipient need is lowest and a single donor has disproportionate marginal returns."}
+library(metR)
+library(geomtextpath)
+expand_grid(
+  p1 = seq(0, 1, len = 10),
+  p2 = seq(0, 1, len = 10)
+) %>%
+  mutate(
+    y = (1 - p1) * p2
+  ) -> dt
+dy <- Derivate(y ~ p1 + p2, data = dt)
+dt %>%
+  mutate(
+    dy.p1 = dy$y.dp1,
+    dy.p2 = dy$y.dp2
+  ) %>%
+  ggplot() +
+  aes(x = p1, y = p2, z = y) +
+  geom_contour_fill() +
+  geom_arrow(
+    aes(dx = dy.p1, dy = dy.p2),
+    color = "white"
+  ) +
+  geom_textabline(
+    slope = -1, intercept = 1,
+    label = "Increasing Likelihood of Lead Donorship",
+    color = "white",
+    text_only = T,
+    fontface = "bold",
+    vjust = 1
+  ) +
+  ggpal("diverging", "fill", 0.5) +
+  scale_x_continuous(
+    breaks = 0:1,
+    labels = c("High Opportunity\nLow Need",
+               "Low Opportunity\nHigh Need")
+  ) +
+  scale_y_continuous(
+    breaks = 0:1,
+    labels = c("Even Returns",
+               "Concentrated Returns")
+  ) +
+  theme(
+    axis.text.x = element_text(
+      hjust = 0:1
+    ),
+    axis.text.y = element_text(
+      angle = 90, hjust = 0:1
+    ),
+    legend.position = "none"
+  ) +
+  labs(
+    x = NULL,
+    y = NULL
+  )
+```
+
+Figure 2 shows variation in lead donorship absent donor collusion. Like with Figure 1, the x-axis shows variation in recipient need and conversely opportunity in realizing non-development or rival goods. The y-axis shows the degree to which marginal returns are disproportionately had by a single donor or spread more evenly across donors. Here, if collusion eludes donors, lead donorship will have the greatest likelihood of occurrence where recipient need is especially high and marginal returns disproportionately obtained by a single donor.
+
+```{r fig.height=4, fig.width=4, fig.cap="(Ellusive Collusion) Expected variation in lead donorship if donor governments fail to collude in the provision of foreign aid. Lead donorship should be concentrated where recipient need is greatest and a single donor has disproportionate marginal returns."}
+expand_grid(
+  p1 = seq(0, 1, len = 10),
+  p2 = seq(0, 1, len = 10)
+) %>%
+  mutate(
+    y = p1 * p2
+  ) -> dt
+dy <- Derivate(y ~ p1 + p2, data = dt)
+dt %>%
+  mutate(
+    dy.p1 = dy$y.dp1,
+    dy.p2 = dy$y.dp2
+  ) %>%
+  ggplot() +
+  aes(x = p1, y = p2, z = y) +
+  geom_contour_fill() +
+  geom_arrow(
+    aes(dx = dy.p1, dy = dy.p2),
+    color = "white"
+  ) +
+  geom_textabline(
+    slope = 1, intercept = 0,
+    label = "Increasing Likelihood of Lead Donorship",
+    color = "white",
+    text_only = T,
+    fontface = "bold",
+    vjust = 1
+  ) +
+  ggpal("diverging", "fill", 0.5) +
+  scale_x_continuous(
+    breaks = 0:1,
+    labels = c("High Opportunity\nLow Need",
+               "Low Opportunity\nHigh Need")
+  ) +
+  scale_y_continuous(
+    breaks = 0:1,
+    labels = c("Even Returns",
+               "Concentrated Returns")
+  ) +
+  theme(
+    axis.text.x = element_text(
+      hjust = 0:1
+    ),
+    axis.text.y = element_text(
+      angle = 90, hjust = 0:1
+    ),
+    legend.position = "none"
+  ) +
+  labs(
+    x = NULL,
+    y = NULL
+  )
+```
+
+These predictions are straightforward, but testing them empirically is not. Need is a multi-dimensional concept, as is the strength of donor-recipient ties. The next section describes a novel, if not bold, empirical strategy. It is one that comes with some costs to precision, but the return is a more tractable analysis that permits a macro-level evaluation of variation in lead donorship.
+
+# Data and Design
 
 This way of understanding how the significance of factors related to donor interest and recipient need contextualize each other is the primary motive for generating composite measures of each concept. By first reducing each to two variables, it is more tractable to quantify how their interaction influences donor behavior. Specifically, these measures make it possible to triangulate contexts where motives for donor giving will be primarily rooted in genuine interest in development promotion or in opportunistic efforts to exercise political influence to obtain policy deals and concessions from developing countries.
 
@@ -97,6 +274,104 @@ This way of understanding how the significance of factors related to donor inter
 # Conclusion
 
 [Ditto]
+
+\clearpage 
+
+# Appendix
+
+We can devise a relatively simple model of public goods provision as follows. Say we have two actors $i = 1, 2$ where $i \neq j$ who derive utility from the provision of a public good $G \in \mathbb{R}_+$ and private consumption $v_i \in \mathbb{R}_+$.
+
+Let the supply of the public good be a linear function of the sum of individual actor contributions:
+$$G = g_1 + g_2.$$
+
+Let each actor be endowed with income $I_i = I_j > 0$. Define utility for $i$ as:
+$$u_i(g_i, v_i; g_j) = \left( g_i + g_j\right)^{\alpha_i} \times v_i.$$
+The parameter $\alpha_i > 0$ captures returns to $i$ from the public good.
+
+Each actor as the constrained optimization problem:
+$$\max_{g_i, v_i \in \mathbb{R}_+^2} u_i(g_i, v_i; g_j) \quad : \quad I_i \geqslant g_i + v_i.$$
+
+Applying the Kurush-Khun-Tucker or KKT conditions, we have the following best response function for $i$, assuming an interior solution:
+$$g_i(I_i, g_j) = \frac{\alpha_i}{1 + \alpha_i} I_i - \frac{1}{1 + \alpha_i} g_j.$$
+
+We can show from this that:
+
+\bigskip
+
+> **Proposition 1**: *An increase in an actor's returns from the public good (1) decreases the magnitude of it's response to the supply of the public good from the other actor and (2) increases its baseline supply of the public good.*
+
+\bigskip
+
+\hrulefill
+
+### Proof
+
+The proof proceeds in two parts. First, to show that $i$'s response to $j$ declines in proportion to $\alpha_i$ consider that:
+$$\partial g_i /\partial g_j = - \frac{1}{1 + \alpha_i} < 0.$$
+
+Given that $\alpha_i > 0$, this implies that for any $\alpha_i$ $i$'s response to an increase in the supply of the public good from $j$ will be to reduce it's own contribution. However, note further that:
+$$\partial^2 g_i / \partial g_j \partial \alpha_i = \frac{1}{(1 + \alpha_i)^2} > 0$$
+
+The positive cross-partial derivative alerts us to the fact that as $\alpha_i \to \infty$, $\partial g_i / \partial g_j \to 0$. In words, the more $i$ cares about $G$, the less reactive it is to $j$'s contribution to the public good.
+
+Next, to show that $i$'s baseline contribution to the public good is greater with $\alpha_i$ consider that
+$$\partial g_i/\partial \alpha_i = \frac{I_i + g_j}{(1 + \alpha_i)^2} > 0.$$
+Hence, all else equal, $g_i$ increases with $\alpha_i$.
+
+\hfill $\blacksquare$
+
+\hrulefill
+
+\bigskip
+
+Define $G^* = g_1^* + g_2^*$ as the equilibrium level of public good supplied by the actors. To identify the unique contributions of both actors, we can proceed by substitution as follows:
+$$
+\begin{aligned}
+g_i^* & = \frac{\alpha_i}{1 + \alpha_i} I_i - \frac{1}{1 + \alpha_i}\left[ \frac{\alpha_j}{1 + \alpha_j} I_j - \frac{1}{1 + \alpha_j } g_i^* \right], \\
+g_i^* - \frac{1}{(1 + \alpha_i)(1 + \alpha_j)} g_i^* & = 
+\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j, \\
+g_i^* & = \frac{\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j}{1 - \frac{1}{(1 + \alpha_i)(1 + \alpha_j)}}.
+\end{aligned}
+$$
+
+It can be shown that:
+
+\bigskip
+
+> **Proposition 2**: *The actor with greater returns from the public good will contribute more toward the good than the actor with lower returns from the public good, all else equal.*
+
+\bigskip
+
+### Proof
+
+\hrulefill
+
+To show that if $\alpha_i > \alpha_j$ then $g_i^* > g_j^*$ we must show that:
+$$
+\frac{\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j}{1 - \frac{1}{(1 + \alpha_i)(1 + \alpha_j)}} > 
+\frac{\frac{\alpha_j}{1 + \alpha_j} I_j - \frac{\alpha_i}{(1 + \alpha_j)(1 + \alpha_i)} I_i}{1 - \frac{1}{(1 + \alpha_j)(1 + \alpha_i)}}.
+$$
+
+We first can simplify:
+$$
+\begin{aligned}
+\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j & > 
+\frac{\alpha_j}{1 + \alpha_j} I_j - \frac{\alpha_i}{(1 + \alpha_j)(1 + \alpha_i)} I_i, \\
+I_i\left[\frac{\alpha_i}{1 + \alpha_i} + \frac{\alpha_i}{(1 + \alpha_i)(1 + \alpha_j)}\right] & > I_j\left[\frac{\alpha_j}{1 + \alpha_j} + \frac{\alpha_j}{(1 + \alpha_j)(1 + \alpha_i)}\right],\\
+\frac{\alpha_i}{1 + \alpha_i} - \frac{\alpha_j}{1 + \alpha_j} & > 
+\frac{\alpha_j - \alpha_i}{(1 + \alpha_i)(1 + \alpha_j)}.
+\end{aligned}
+$$
+
+By definition, the above condition is true for any $\alpha_i > \alpha_j$. The left-hand side of the inequality is strictly positive, while the right-hand side is negative. Hence, it must be the case that if $\alpha_i > \alpha_j$, then $g_i^* > g_j^*$.
+
+\hfill $\blacksquare$
+
+\hrulefill
+
+\bigskip
+
+\clearpage
 
 # References
 \setlength{\parindent}{-0.2in}
