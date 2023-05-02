@@ -1,24 +1,31 @@
 ---
 output: 
-  stevetemplates::article:
-    fig_caption: true
+  pdf_document
 bibliography: ref.bib
-biblio-style: apsr
-title: "Cooperation or Competitive Equilibrium? The Determinants of Lead Donorship in International Development"
-thanks: "Replication files are available on the author's Github account (http://github.com/milesdwilliams15). **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: williamsmd@denison.edu."
-author:
-- name: Miles D. Williams
-  affiliation: Denison University
-abstract: "Is lead donorship the product of collaboration or of a competitive general equilibrium? The phenomenon of lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---has garnered attention for its proposed ability to foster greater coordination among donor governments by limiting inefficient donor competition and free-riding. But the pro-cooperation properties of lead donorship lie downstream from the strategic context that gives rise to it. Building on an existing theory that embeds lead donorship in a framework characterizing the public and private goods properties of international aid, this study shows that the observed pattern of lead donorship is consistent with uncooperative behavior. This is done using novel measures of donor foreign policy interest and recipient development need and a research design that helps to triangulate when and where aid produces public and private goods for donor governments."
-keywords: "foreign aid, lead donorship, development"
+title: "Cooperation or Competitive Equilibrium?" 
+subtitle: "The Determinants of Lead Donorship in International Development"
+author: "Miles D. Williams^[Denison University, williamsmd@denison.edu]"
+abstract: "Is lead donorship the product of collusion or does collusion elude donor governments? The phenomenon of lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---has garnered attention for its proposed ability to foster greater coordination among donor governments by limiting inefficient donor competition and free-riding. But the pro-cooperation properties of lead donorship lie downstream from the strategic context that gives rise to it. Building on an existing theory that embeds lead donorship in a framework characterizing the public and private goods properties of international aid, this study shows that the observed pattern of lead donorship is consistent with uncooperative behavior. This is done using novel measures of donor foreign policy interest and recipient development need and a research design that helps to triangulate when and where aid produces public and private goods for donor governments."
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
 fontfamily: mathpazo
-fontsize: 11pt
-# spacing: double
-endnote: no
+fontsize: 12pt
+header-includes:
+  - \usepackage{amsmath}
+  - \usepackage{setspace}
+  - \setlength\parindent{24pt}
+  - \setlength{\parskip}{0.0pt plus 1.0pt}
+  - \doublespacing
+  - \usepackage{caption}\captionsetup[table]{skip=5pt}
+  - \usepackage{dcolumn}
+  - \usepackage{float}
+  - \floatplacement{figure}{!t}
+  - \usepackage{scrpage2}
 ---
 
+**Key Words**: *foreign aid*, *lead donorship*, *collusion*
+
+**Word Count**: `r scales::comma(wordcountaddin::word_count(here::here("03_report", "01_draft.Rmd")))`
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE,
                       echo=FALSE,
@@ -33,33 +40,33 @@ library(tidyverse)
 library(coolorrr)
 set_theme()
 set_palette()
+library(estimatr)
+library(texreg)
 ```
 
 # Introduction
 
-Is lead donorship a product of collusion or of a competitive general equilibrium? This question has special relevance in light of recent efforts to understand the link between lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---and aid effectiveness. In this study, the case is made that lead donorship follows from *uncooperative* behavior rather than collusion. This novel finding is supported by new measures, a semi-parametric modeling approach, and by examining patterns in lead donorship at the dyadic and recipient level.
+Is lead donorship a product of collusion or of a competitive general equilibrium? This question has special relevance in light of recent efforts to understand the link between lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---and aid effectiveness. Past research suggests that lead donorship results from donor collusion [@steinwand2015], but the results from this study support the alternative, namely, that lead donorship is the product of uncooperative behavior. This novel finding is supported by new measures and a semi-parametric modeling approach, and it is important for both normative and theoretical reasons.
 
 Understanding the mechanisms that give rise to lead donorship is important because of its deep connection to another phenomenon called aid fragmentation, which characterizes the extent to which a developing country receives aid from a diverse portfolio of donors. Past findings are mixed, but many propose that aid fragmentation may strain recipient bureaucratic capacity [@kanbur2006; @knackRahman2007], increase donor transaction costs [@anderson2012], and reduced donors' ability to use aid conditionality to spur positive development and governance reforms in recipients [@hernandez2017; @zeitz2021]. At the same time, others propose that lack of recipient choice (i.e., low fragmentation or the presence of a lead donor) can have negative effects, and that under the right conditions, fragmentation actually has pro-development and growth impacts [@gehringEtAl2017]. While a definitive statement on the effect of fragmentation remains elusive, most scholars agree that it matters for aid effectiveness. By extension so does lead donorship.
 
-@steinwand2015 was the first to propose the concept of lead donorship and argues that it arises for one of two reasons. First, if aid produces public goods for donor governments, lead donorship arises out of uncooperative behavior as the donor with the most to gain from promoting public goods takes the lead in providing aid while others reduce their own provision and pass the buck to the top donor. Alternatively, if aid produces private or rival goods, lead donorship arises out of collusive behavior as other donors forego competition and cede to the donor with the most to gain from a dominant relationship with a developing country the top position. 
+@steinwand2015 was the first to propose the concept of lead donorship and argues that it arises for one of two reasons. First, if aid produces public goods for donor governments, lead donorship must arise out of uncooperative behavior as the donor with the most to gain from promoting public goods takes the lead in providing aid while others reduce their own giving and pass the buck to the top donor. Alternatively, if aid produces private or rival goods, lead donorship would have to arise out of collusive behavior as other donors forego competition and cede to the donor with the most to gain from a dominant relationship with a developing country the top position. 
 
-The arguments that buttress these claims are sound, but testing them empirically is challenging. In this study, I propose composite measures that capture two key dimensions along which donor governments are supposed to based their aid allocations: *donor interest* or *ties* with developing countries and *recipient need*. 
+The arguments that buttress these claims are sound, but testing them empirically is challenging. In this study, I propose composite measures that capture two key dimensions along which donor governments are supposed to based their aid allocations: *donor interest* or *ties* with developing countries and *recipient need*.
 
 Two hypotheses are proposed. If donors collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients that have relatively low need and that have relative strong ties with a single donor. Conversely, if donors do not collude in the provision of aid, we should observe lead donorship with the greatest frequency in recipients that have high need and concentrated ties with one or a few donors. The first hypothesis is labelled the "collusion hypothesis" and the second the "elusive collusion hypothesis."
 
-These hypotheses follow from two assumptions about recipient need and donor interest. First, it is assumed that high levels of need correspond with greater donor emphasis on public goods provision. Conversely, lower levels of need correspond with opportunity to leverage private or rival goods. 
-
-Second, strong bilateral ties between a donor and recipient correspond with relatively high marginal returns from promoting either public or private goods. Meanwhile, weak bilateral ties correspond with low marginal returns from promoting public or private goods.
+These hypotheses follow from two assumptions about recipient need and donor interest. First, it is assumed that high levels of need correspond with greater donor emphasis on public goods provision rather than rival goods. Second, it is assumed that strength of bilateral ties between a donor and recipient are proportional to donors' marginal returns from promoting either public or rivals goods.
 
 Classic collective action models show that with public goods and differing marginal returns, selfish behavior among actors leads the actor with the highest marginal returns to bear the brunt of supplying the public good. Conversely, with private/rival goods, selfish behavior leads to crowding in as actors compete making it harder for the actor with the greatest relative returns to keep the top position.
 
 To construct the measures necessary to test these hypotheses I use a method that creates a linear combination of a set of covariates by maximizing the sum of the squared covariances between this linear combination and each individual component variable. I rely on two sets of measures to construct an index of donor ties with recipients and an index of recipient need. The first is composed of measures of bilateral trade, colonial past, bilateral distance, and military alliances. The second is composed of recipient level measures of average income, population size, ongoing civil war, the impact of natural disasters, and strength of democracy. Lead donorship is measured following a similar strategy to that outlined by @steinwand2015.
 
-To test the main predictions, a semi-parametric approach is adopted. The data are aggregated to the recipient-year level with lead donorship modeled within a generalized additive model or GAM framework using a logit link function with year fixed effects and random recipient effects. A joint smoothing function is used to map the interaction of a measure of donor tie concentration and level of recipient need to the probability of lead donorship.
+To test the hypotheses a semi-parametric approach is adopted. The data are aggregated to the recipient-year level with lead donorship modeled within a generalized additive model or GAM framework using a logit link function with year fixed effects and random recipient effects. A joint smoothing function is used to map the interaction of a measure of donor tie concentration and level of recipient need to the probability of lead donorship in a developing country.
 
-The results provide strong support for the elusive collusion hypothesis. Lead donorship has the greatest probability of occurrence in developing countries that have high need and that have bilateral ties concentrated with one or a few donor governments. Elsewhere in the data, the likelihood of lead donorship is substantially smaller. This suggests that when lead donorship does arise, the likely culprit is uncooperative buck-passing behavior rather than collusive deference to a top donor.
+The results provide strong support for the elusive collusion hypothesis. Lead donorship has the greatest probability of occurrence in developing countries that have high need and that have bilateral ties concentrated with one donor government. Elsewhere in the data, as ties are less concentrated or as need is less severe, the likelihood of lead donorship is substantially smaller. This suggests that when lead donorship does arise, the likely culprit is uncooperative buck-passing behavior rather than collusive deference to a top donor.
 
-This finding matters for ongoing policy debates and raises important theoretical questions. From a policy perspective, the seeming failure to identify much collusive behavior among donors (at least at a macro level) is frustrating in light of decades-long efforts to spur greater donor cooperation. From a theoretical perspective, systemic cooperation failure begs the question as to why un-collusive behavior is so enduring. Are there features of the strategic environment that donors and recipients inhabit that prevent cooperation? In addition, is aid effectiveness improved or worsened by virtue of when and where lead donorship emerges? These are important questions for future research to address.
+This finding matters for ongoing policy debates and raises important theoretical questions. From a policy perspective, the seeming failure to identify much collusive behavior among donors (at least at a macro level) is frustrating in light of decades-long efforts to spur greater donor cooperation. From a theoretical perspective, systemic cooperation failure begs the question as to why un-collusive behavior is so endemic. Are there features of the strategic environment that donors and recipients inhabit that prevent cooperation? In addition, is aid effectiveness improved or worsened by virtue of when and where lead donorship emerges? These are important questions for future research to address.
 
 # Background on Lead Donorship
 
@@ -79,13 +86,13 @@ The logic of lead donorship and its connection to donor collusion is clear enoug
 
 The approach @steinwand2015 takes is novel and creative, but given the complexity of the issue it involves a number of moving parts. First, to delineate aid given primarily for public or private goods, @steinwand2015 disaggregates foreign aid by two main delivery channels: government-to-government and bypass aid. 
 
-Before Steinwand, @deitrich2013 is among the first to note the possibility of different motives associated with these alternative forms of aid delivery. @deitrich2013 argues that while donor governments certainly are driven by non-development foreign policy goals, they do also care about responding to recipient country development need. She hypothesizes that donors should therefore be sensitive to recipient governance quality, calibrating their form of aid delivery to optimize the chances that aid reaches the populations in a recipient country it is meant to help. Specifically, she argues that donor countries will use the so-called "bypass" channel in inverse proportion to the quality of governance in a recipient. 
+@dietrich2013 is among the first to note the possibility of different motives associated with these alternative forms of aid delivery. @dietrich2013 argues that while donor governments certainly are driven by non-development foreign policy goals, they do also care about responding to recipient country development need. She hypothesizes that donors should therefore be sensitive to recipient governance quality, calibrating their form of aid delivery to optimize the chances that aid reaches the populations in a recipient country it is meant to help. Specifically, she argues that donor countries will use the so-called "bypass" channel in inverse proportion to the quality of governance in a recipient. 
 
-Bypass aid constitutes resources that are given to nongovernmental actors such as NGOs operating in recipients rather than through direct cooperation with the state bureaucracy. In poorly governed developing countries, donors may fear that aid will be lost to rent-seeking elites. This mistrust in turn leads them to target more aid through the bypass channel relative to the government-to-government channel. @deitrich2013 finds strong support for her claims, and later studies have found similar patterns when examining different aid sectors [@bermeo2017; @bermeo2018] and alternative measures of limited state capacity such as civil conflict [@everettTirone2021].
+Bypass aid constitutes resources that are given to nongovernmental actors such as NGOs operating in recipients rather than through direct cooperation with the state bureaucracy. In poorly governed developing countries, donors may fear that aid will be lost to rent-seeking elites. This mistrust in turn leads them to target more aid through the bypass channel relative to the government-to-government channel. @dietrich2013 finds strong support for her claims, and later studies have found similar patterns when examining different aid sectors [@bermeo2017; @bermeo2018] and alternative measures of limited state capacity such as civil conflict [@everettTirone2021]. Of course, @dietrich2016 puts important scope conditions on this practice, finding that the political economies of donors---whether they are oriented toward market-efficiency or a strong state---condition the use of the bypass channel as well.
 
 After separating aid by delivery channel, @steinwand2015 further applies spatial autoregressive models and proposes alternative hypotheses for the direction of the spatial correlation in donor giving on the basis of delivery channel and the presence of donor collusion. Specifically, if donors cooperate in the provision of public goods, donor reactivity to other-donor aid should be null when examining the bypass aid channel. However, if donors do not collude, then they should give less aid in inverse proportion to the giving of others due to free-riding.
 
-Conversely, if donors collude in private goods aid, donors should have a negative reaction to other-donor giving through the government-to-government channel. But, if donors do not cooperate, they should crowd in resources and thus give more aid in proportion to the giving of other donors through the same.
+Conversely, if donors collude in private goods aid, donors should have a negative reaction to other-donor giving through the government-to-government channel. The idea is that donors agree to a delineation of spheres of influence. By foregoing competition for rival goods where they reap only minimal returns, donors are free to target aid in developing countries where they reap higher marginal returns. But, if donors do not cooperate, they should crowd in resources in the government channel and thus give more aid in proportion to the giving of other donors.
 
 Steinwand's findings only partially support these expectations. Most notably, the fine-grained distinction between bypass and government-to-government aid---that one is oriented toward public goods and the other private---does not hold up in the empirical analysis. In fact, @steinwand2015 finds evidence of competition in bypass aid, contrary to the claim that the bypass channel closely corresponds to public goods.
 
@@ -101,11 +108,11 @@ In this study, an alternative empirical strategy is proposed. Rather than use va
 
 # Triangulating Public and Rival Goods in Aid Allocation
 
-The motivations behind giving foreign aid have intrigued IR scholars and economists alike ever since the practice emerged in its modern form after World War II. Early contributions to the literature were divided with respect to whether the factors driving aid giving were primarily humanitarian or altruistic in nature, or else cynical, driven by the self-serving foreign policy, economic, and security goals of donors. McKinlay and Little (1979) set the tone for future studies by pitting measures of recipient need against measures of donor interest in their analysis of US aid data from 1960 to 1970. Future studies would adopt a similar approach (see Alesina and Dollar 2000; Maizels and Nissanke 1984; Schraeder, Hook, and Taylor 1998).
+The motivations behind giving foreign aid have intrigued IR scholars and economists alike ever since the practice emerged in its modern form after World War II. Early contributions to the literature were divided with respect to whether the factors driving aid giving were primarily humanitarian or altruistic in nature, or else cynical, driven by the self-serving foreign policy, economic, and security goals of donors. @mckinlayLittle1979 set the tone for future studies by pitting measures of recipient need against measures of donor interest in their analysis of US aid data from 1960 to 1970. Future studies would adopt a similar approach [see @alesinaDollar2000; @maizelsNissanke1984; @schraederEtAl1998].
 
-Contemporary research has since moved away from the sharp dichotomy between recipient need and donor interest. Instead, scholars recognize that donor governments' motives are often mixed and vary over time. Existing studies point to a number of factors that correspond either with donor interest or recipient need as drivers of donor giving. Studies show that foreign aid is linked to donors' geostrategic goals, interest in promoting bilateral trade, combating global terrorism, maintaining influence over former colonies, gaining international prestige, complementing military deployments, and addressing the root causes of discontent and instability, to name but a few (Alesina and Dollar 2000; Bearce and Tirone 2010; Bermeo 2017; Kilby and Dreher 2010; Kisangani and Pickering 2015; Round and Odedokun 2004; and van der Veen 2011). 
+Contemporary research has since moved away from the sharp dichotomy between recipient need and donor interest. Instead, scholars recognize that donor governments' motives are often mixed and vary over time. Existing studies point to a number of factors that correspond either with donor interest or recipient need as drivers of donor giving. Studies show that foreign aid is linked to donors' geostrategic goals, interest in promoting bilateral trade, combating global terrorism, maintaining influence over former colonies, gaining international prestige, complementing military deployments, and addressing the root causes of discontent and instability, to name but a few [@alesinaDollar2000; @bearceTirone2010; @bermeo2017; @bermeo2018; @kilbyDreher2010; @kisanganiPickering2015; @roundOdedokun2004; @vanDerVeen2011]. 
 
-Given the numerous motives behind foreign aid, the more interesting question addressed by recent scholarship centers not on the question of *whether* donors are altruistic or self-serving, but instead on *when*. In one prominent example, Heinrich (2013) shows that when recipient policy choices have salience for donors, aid is driven by "selfish" donor motives. Alternatively, greater awareness of poverty in the recipient country increases "selfless" aid giving.
+Given the numerous motives behind foreign aid, the more interesting question addressed by recent scholarship centers not on the question of *whether* donors are altruistic or self-serving, but instead on *when*. In one prominent example, @heinrich2013 shows that when recipient policy choices have salience for donors, aid is driven by "selfish" donor motives. Alternatively, greater awareness of poverty in the recipient country increases "selfless" aid giving.
 
 Bermeo (2017, 2018) goes further, arguing that because of the increasing interconnections between industrialized and developing countries in a globalizing world, addressing recipient needs also serves the self-interest of donor governments. She shows this is especially true in proportion to the strength of the connections between an industrialized country donor and a developing country recipient. 
 
@@ -113,31 +120,35 @@ Both Heinrich's (2013) and Bermeo's (2017, 2018) studies point to two variables 
 
 While these views of the significance of donor-recipient ties seem to contradict, the second concept important to both scholars---recipient need---helps to resolve this contradiction. Indeed, both perspectives on the donor motives linked to donor-recipient ties may be true. However, when one or the other holds should be conditioned by recipient need. While Heinrich (2013) sees both donor interest and recipient need as *separate* variables, Bermeo (2017, 2018) sees them as *connected*. That is, returns from responding to recipient need vary in proportion to donor-recipient ties. Further, variation in recipient need colors the meaning of donor connections to recipients.
 
-One example of this is donor relationships with former colonies. Several studies show a strong pro-colonial bias in the aid allocation decisions of donor governments, and this finding is often attributed to the neo-colonial aspirations of donors (see Alesina and Dollar 2000). By targeting economic assistance to former colonies, old colonial powers are supposed to exercise political influence absent formal colonial rule. However, colonial ties also make donor countries especially sensitive to problems rooted in underdevelopment in their former colonies. These ties increase the likelihood that negative spillovers due to poverty or conflict will have an impact on the population of the former colonizer. Thus, ex-colonies may be important targets of foreign aid, but for a very different reason.
+One example of this is donor relationships with former colonies. Several studies show a strong pro-colonial bias in the aid allocation decisions of donor governments, and this finding is often attributed to the neo-colonial aspirations of donors [see @chibaHeinrich2019]. By targeting economic assistance to former colonies, old colonial powers are supposed to exercise political influence absent formal colonial rule. However, colonial ties also make donor countries especially sensitive to problems rooted in underdevelopment in their former colonies. These ties increase the likelihood that negative spillovers due to poverty or conflict will have an impact on the population of the former colonizer. Thus, ex-colonies may be important targets of foreign aid, but for a very different reason: development need.
 
-A similar logic holds with respect to recipient need. Greater need may signal greater likelihood of instability and possible negative spillovers. But as recipient need declines, donors may see more *opportunity* than *threat* posed by the developing country. Without worry of civil wars, terrorism, or outbreaks of infectious disease, an increase in donor-recipient ties may instead signal greater returns from aid-for-policy deals (see Bueno de Mesquita and Smith 2009).
+A similar logic holds with respect to recipient need. Greater need may signal greater likelihood of instability and possible negative spillovers. But as recipient need declines, donors may see more *opportunity* than *threat* posed by the developing country. Without worry of civil wars, terrorism, or outbreaks of infectious disease, an increase in donor-recipient ties may instead signal greater returns from aid-for-policy deals [see @bdms2009].
 
-This discussion points to a simple proposition, namely, that depth of recipient need interacts with the strength of donor-recipient connections to shape the kinds of goods donors get out of their aid allocation. As recipient need deepens, the public goods properties of aid should be more pronounced. Conversely, as recipient need becomes more shallow, the political opportunities that giving aid affords donors may take on greater salience, giving way to rival goods as donors vie for influence. Donor ties with recipients may in turn determine the returns that donors receive from their aid allocation.
+This discussion points to a simple proposition, namely, that depth of recipient need interacts with the strength of donor-recipient connections to shape the kinds of, and returns from, goods donors get out of their aid allocation. As recipient need deepens, the public goods properties of aid should be more pronounced. Conversely, as recipient need becomes more shallow, the political opportunities that giving aid affords donors may take on greater salience, giving way to rival goods as donors vie for influence. Donor ties with recipients may in turn determine the returns that donors receive from their aid allocation.
 
-Of course, this characterization of how donor-recipient ties interact with recipient need is to paint with a broad brush indeed. But tractability is gained in exchange for exactness. The next section continues this discussion and lays out two alternative hypotheses for lead donorship given the interaction of recipient need and donor-recipient ties.
+Of course, this characterization of how donor-recipient ties interact glosses over certain details. But tractability is gained in exchange for exactness. The next section continues this discussion and lays out two alternative hypotheses for lead donorship given the interaction of recipient need and donor-recipient ties.
 
 # Hypotheses
 
-Returning to Steinwand's (2015) argument about lead donorship, variation in recipient need and donor-recipient ties points to two competing hypotheses. These competing hypotheses follow from two different scenarios, one where donor governments collude in the provision of foreign aid and the other where they fail to collude and thus engage in a mix of competition and buck-passing depending on the goods (public or rival) in question.
+The discussion up to now points to two competing hypotheses. These competing hypotheses follow from two different scenarios, one where donor governments collude in the provision of foreign aid and the other where they fail to collude and thus engage in a mix of competition and buck-passing depending on the goods (public or rival) in question.
 
-Following Steinwand (2015), donor collusion implies a delineation of spheres of influence in a rival goods context and a mitigation of buck-passing or free-riding with public goods. This means lead donorship should arise with the greatest frequency when and where rival goods have disproportionate weight relative to public goods and where one donor obtains comparatively more marginal returns relative to other donors. Further, lead donorship should occur with less frequency with public goods, even if one donor obtains more marginal returns relative to others. This may be called the "collusion hypothesis" stated simply as:
+Following Steinwand (2015), donor collusion implies a delineation of spheres of influence in a rival goods context and a mitigation of buck-passing or free-riding with public goods. This means lead donorship should arise with the greatest frequency when and where rival goods have disproportionate weight relative to public goods and where one donor obtains comparatively more marginal returns relative to others. Further, lead donorship should occur with less frequency with public goods, even if one donor obtains more marginal returns relative to others, as donors agree to mitigate free-riding. This may be called the "collusion hypothesis" stated simply as:
 
 \bigskip
 
-> **H1 (Collusion)**: *Donor governments collude in the provision of foreign aid.*
+> **H1 (Collusion)**: *Lead donorship should emerge when and where foreign aid provides more rival than public goods and marginal returns are concentrated in a single donor.*
 
 \bigskip
 
 Alternatively, the absence of collusion implies an absence of clear spheres of influence with rival goods and the presence of buck-passing with public goods. This means that lead donorship will have a low likelihood of arising with rival goods, even when one donor obtains disproportionate marginal returns. However, lead donorship will have a greater likelihood of arising with public goods, especially when one donor obtains greater marginal returns relative to others. We may call this the "elusive collusion hypothesis" because it holds that collusion eludes or remains absent in the aid allocations of donors.
 
-> **H2 (Elusive Collusion)**: *Donor governments do not collude in the provision of foreign aid.*
+\bigskip
 
-Each hypothesis implies different patterns in lead donorship across developing countries. Figures 1 and 2 aid in the description of these patterns. Figure 1 shows the variation in lead donorship that we would observe with donor collusion. The x-axis shows variation in the level of recipient need, and by symmetry inverse variation in opportunity. The y-axis shows variation in the degree to which recipient ties with donors are relatively even or else concentrated in a single donor. Under collusion, lead donorship occurs with greatest frequency in the upper-left quadrant of the figure where recipient need is low and a single donor obtains greater marginal returns from private goods relative to other donors.
+> **H2 (Elusive Collusion)**: *Lead donorship should emerge when and where foreign aid provides more public than rival goods and marginal returns are concentrated in a single donor.*
+
+\bigskip
+
+Each hypothesis implies different patterns in lead donorship across developing countries, which may be difficult to intuit. Figures 1 and 2 aid in the description of these patterns. Figure 1 shows the variation in lead donorship that we would observe with donor collusion. The x-axis shows variation in the level of recipient need, and by symmetry inverse variation in opportunity. The y-axis shows variation in the degree to which recipient ties with donors are relatively even or else concentrated in a single donor. Under collusion, lead donorship occurs with greatest frequency in the upper-left quadrant of the figure where recipient need is low and a single donor obtains greater marginal returns from private goods relative to other donors.
 
 ```{r fig.height=4, fig.width=4, fig.cap="(Collusion) Expected variation in lead donorship if donor governments collude in the provision of foreign aid. Lead donorship should be concentrated where recipient need is lowest and a single donor has disproportionate marginal returns."}
 library(metR)
@@ -253,125 +264,771 @@ dt %>%
   )
 ```
 
-These predictions are straightforward, but testing them empirically is not. Need is a multi-dimensional concept, as is the strength of donor-recipient ties. The next section describes a novel, if not bold, empirical strategy. It is one that comes with some costs to precision, but the return is a more tractable analysis that permits a macro-level evaluation of variation in lead donorship.
+These predictions are straightforward, but testing them empirically is not. Need is a multi-dimensional concept, as is the strength of donor-recipient ties. After first detailing the measurement strategy for lead donorship, the section that follows describes a novel, if not bold, empirical strategy to measure need and ties. It is one that comes with some costs to precision, but the return is a more tractable analysis that permits a macro-level evaluation of variation in lead donorship.
 
-# Data and Design
+# Measuring Lead Donorship
 
-This way of understanding how the significance of factors related to donor interest and recipient need contextualize each other is the primary motive for generating composite measures of each concept. By first reducing each to two variables, it is more tractable to quantify how their interaction influences donor behavior. Specifically, these measures make it possible to triangulate contexts where motives for donor giving will be primarily rooted in genuine interest in development promotion or in opportunistic efforts to exercise political influence to obtain policy deals and concessions from developing countries.
+As a matter of observation, identifying clear cases of lead donorship (narrowly defined in terms of high donor concentration) should be easy enough---so, too, with identifying clear cases of its absence. To illustrate, consider Figure 3, which shows the share of aid committed by the top DAC donor in a given year to two aid recipients: Mexico (left) and Mozambique (right). The x-axes of each panel in the figure denote years from 1996 to 2014. The y-axes show the percent of total aid going to a recipient that the top donor is responsible for. These data come from the OECD's Creditor Reporting System (CRS) and reflect the total of bilateral Official Development Assistance (ODA) commitments in 2017 constant US dollars across the 24 main development sectors as defined by the OECD. Abbreviated country names are included so it is clear which donor is responsible for committing the top share of aid. Also, lighter columns have been added that indicate the share of aid committed by the donor responsible for the second greatest amount in a given year. This provides a point of reference for how much more the top donor in a given year committed relative to the next most generous donor.
 
-# Hypotheses
+```{r, fig.height=4, fig.width=10, fig.cap="Aid shares of top donors to Mexico and Mozambique."}
+dt <- read_csv(
+  here::here("01_data", "final_data.csv")
+)
+roll_ave <- function(x) {
+  x <- xn <- c(NA, NA, x)
+  for(i in 3:length(x)) {
+    x[i] <- mean(xn[(i-2):i], na.rm=T)
+  }
+  x <- x[3:length(x)]
+  return(x)
+}
 
-[I'll state my hypotheses here, probably with some fancy 2x2 table.]
+## Define lead donorship bilaterally:
+dt %>%
+  mutate(
+    ties = - ties,
+    need = - need
+  ) %>%
+  group_by(recipient, year) %>%
+  mutate(
+    aid_share = aid / sum(aid),
+    HI = sum(aid_share^2),
+    top_donor = (aid==max(aid)),
+    top_share = max(aid_share),
+    aid_1st = max(aid),
+    aid_2nd = sort(aid, decreasing = T)[2],
+    aid_diff = aid_1st - aid_2nd,
+    ## aid_share = aid / sum(aid),
+    ## aid_share_gt = aid_share > median(aid_share),
+    ## top_donor = (aid==max(aid))+0,
+    ## fst_aid = max(aid),
+    ## snd_aid = sort(aid, decreasing = T)[2],
+    ties_share = (ties - min(ties)) / sum(ties - min(ties))
+  ) %>%
+  ungroup %>%
+  
+  ## Steinwand's measure
+  mutate(
+    lead_donor_year = ifelse(
+      (HI > median(HI)) &
+        (aid_diff > median(aid_diff)) &
+        (aid_share > median(aid_share)) &
+        top_donor,
+      1, 0
+    )
+  ) %>%
+  arrange(year) %>%
+  group_by(donor, recipient) %>%
+  mutate(
+    lead_donor = roll_ave(lead_donor_year)
+  ) %>%
+  ungroup -> dt
+dt %>%
+  mutate(
+    donor_code = countrycode::countrycode(
+      donor, "country.name", "iso3c"
+    )
+  ) %>%
+  filter(
+    recipient %in% c("Mexico", "Mozambique")
+  ) %>%
+  group_by(recipient, year) %>%
+  transmute(
+    donor_code = donor_code,
+    aid_share = aid / sum(aid),
+    aid_1st = aid_share == sort(aid_share, decreasing = T)[1],
+    aid_2nd = aid_share == sort(aid_share, decreasing = T)[2]
+  ) %>%
+  filter(
+    aid_1st | aid_2nd
+  ) %>%
+  ungroup %>%
+  group_split(aid_2nd) -> plt_dt
 
-# Data and Design
+ggplot(plt_dt[[1]]) +
+  aes(year, aid_share, label = donor_code) +
+  geom_col(
+    color = 'black',
+    fill = 'firebrick'
+  ) +
+  geom_text(vjust = .5, hjust = 1, angle = 90,
+            color = "white", fontface = "bold") +
+  geom_text(
+    aes(label = round(aid_share*100)),
+    vjust = -.5
+  ) +
+  geom_col(
+    data = plt_dt[[2]],
+    aes(year, aid_share),
+    fill = "lightgrey",
+    alpha = 0.4,
+    width = 0.75
+  ) +
+  facet_wrap(~ recipient) + 
+  scale_x_continuous(
+    breaks = 1996:2014
+  ) +
+  scale_y_continuous(
+    labels = scales::percent,
+    limits = c(0, 1)
+  ) +
+  labs(
+    x = NULL,
+    y = "Aid Share"
+  ) +
+  theme(
+    axis.text.x = element_text(
+      angle = 45, hjust = 1
+    ),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  ) 
+```
 
-[I'll start by describing the empirical model and estimation strategy first. Then I'll discuss the data and the construction of the variables.]
+Among the 29 DAC countries committing foreign aid across 24 development sectors to Mexico, the United States held top donor status for 14 out of 19 years from 1996 to 2014. The US further bore responsibility for, not just the plurality, but the majority of aid for eight of those years. This comes as little surprise. Mexico shares a border with the United States and has greater long-term security, diplomatic, and migration policy importance for the US government than for other DAC members.
 
-# Results
+Conversely, over this same period the share of aid committed by the top DAC donor per year to Mozambique was 23$\%$ on average, declining to as low as 15$\%$ in 2005, and only climbing as high as 46$\%$ in 2008 before falling to 22$\%$ the next year. While the United States committed the largest share of aid for several years, top donor status fluctuated among a group donors from 1996 to 2007. And, even though the US committed the most aid to Mozambique from 2008 to 2014, in nearly all of those years (2008 being the exception), the second most generous donor did not fall far behind.\footnote{The sizeable and rapid jump in US support in 2008 coincided with the onset of a devastating flood in Mozambique in early 2008 that killed several and displaced tens of thousands. Total DAC giving to Mozambique increased to 1.78 billion from 1.5 billion 2017 constant US dollars this same year. It is interesting to note that the US was responsible for much of this increase. However, in the following years, in addition to aid totals slowly declining, the US clearly began to bear less responsibility for the total amount given.} While Portugal formerly colonized Mozambique---making it a plausible contender for lead donor given the role of colonial legacy in driving aid giving [@chibaHeinrich2019]---it only held top-donor status in 1997 and again in 1999 and 2000.
 
-[It's obvious what goes here]
+The United States arguably qualifies as a lead donor in the first case (Mexico), while no obvious lead donor exists in the second (Mozambique). Of course, not all cases can be categorized so decisively. The question of where to draw the line is unavoidably subjective and arbitrary, which poses a challenge to setting down criteria for lead donorship. Thankfully, prior research points to helpful metrics and benchmarks.
+
+One such metric is donor concentration, which captures the degree to which the supply of aid given to a recipient comes from concentrated or diffuse sources. The Herfindahl index (HI) is the most commonly applied such measure in the aid literature [see @djankovEtAl2009; @gehringEtAl2017; @knackRahman2007; @steinwand2015], and for good reason. HI has a simple formulation and intuitive interpretation. With respect to a recipient $r$ in year $t$ HI is given as
+$$\text{HI}_{rt} = \sum_{i = 1}^N \pi_{irt}^2, \tag{5}$$
+where $\pi_{irt}$ is the share of aid given to recipient $r$ in year $t$ that donor $i$ is responsible for. The final measure is equal to the probability that two randomly drawn dollars from the overall aid given to a recipient in a given year come from the same donor. The higher this probability, the more concentrated the donor pool.
+
+However, while HI offers simplicity and interpretability, it lacks specificity. While it summarizes how concentrated donorship to a recipient is, it does not reveal which donor, or set of donors, bears responsibility for the greatest share.
+
+Alternatives to this measure exist that have their own strengths and weaknesses. @gehringEtAl2017 summarize some, including a class of indices called concentration ratios (CR) and a simple count of the number of donors giving aid to a recipient in a given year. The latter is straightforward and the simplest of all the measures. But, the cost of this simplicity is an inability to distinguish between a case where, say, 10 donors give aid to a recipient but one gives 50 percent of the total supply and a case where 10 donors give aid in equal proportion to each other. 
+
+The former, CR, has the benefit of capturing aid shares with respect to a top donor or set of donors, but it does require some user discretion in how the ratios are defined. CR entails summing up the shares of aid contributed by a set of the largest donors. However, whether this set should consist of only the top donor or top five, there is no objectively correct answer. Further, depending on the overall distribution of aid shares across donors, CR can provide very different answers about the degree of donor concentration depending on how many donors are factored into the equation. That said, CR does provide specificity with respect to the top donor or set of donors giving aid, which cannot be said for the other measures.
+
+Given the pros and cons of these indices, it is no surprise that @steinwand2015, who provides the first set of empirical criteria for identifying a lead donor, uses a mix of measures to take advantage of their strengths while overcoming their weaknesses. In particular, Steinwand codes lead donorship as present when:
+
+\bigskip
+
+  1. The HI for a given recipient in a given year is greater than the median HI for the data sample;
+  2. The difference between the total amount of aid given by the top donor relative to the next largest donor to a recipient in a year is greater than the sample median of this difference;
+  3. The share of aid to a recipient in a given year from the top donor is greater than the sample median of aid shares.
+  
+\bigskip  
+  
+This measure takes into account not only the degree of donor concentration, but also the absolute and relative amount of aid given to a recipient from the top donor. To further capture the temporal dynamic of lead donorship, @steinwand2015 adds the following longitudinal criteria:
+
+\bigskip
+
+  4. A donor must have top donor status for at least 5 out of 9 consecutive years;
+  5. A donor must not drop from top donor status for more than 2 consecutive years in that 9 year time span.
+
+\bigskip
+
+In devising a measure of lead donorship for this study, I adopt some, but not all, of these decision rules. In particular, I rely on the first three while I opt for a slightly more flexible approach to deal with the longitudinal dimension of lead donorship. Instead of the year-based criteria, I use a simple lagged rolling average of lead donorship:
+
+\bigskip
+
+> *For a given year, I calculate the proportion of times a donor meets the criteria specified in points 1-3 in that year and the two previous.*
+
+\bigskip
+
+With this approach, if a donor met criteria 1-3 in 1999 and 2000, but fell short in 2001, its lead donor status would be 2/3 in 2001. This strategy adds a fuzziness to lead donorship that Steinwand's measure lacks. Rather than being entirely present or absent, lead donorship may wax and wane with a certain degree of granularity.
+
+This choice has a practical, in addition to metrological, purpose. Namely, it helps to avoid having to drop the first nine years from my panel dataset in order to construct a valid measure. By Steinwand's longitudinal criteria, no observations in the first nine years of the the CRS panel would be coded as lead donor, making them unusable in analysis---a significant loss of data. In contrast, by basing lead donorship on a three-year lagged running average, only the first two years need to be dropped.
+
+These selected cut-offs (sample medians and number of years) is unavoidably arbitrary, but it does a fair job of identifying cases where, on its face, lead donorship is present. Consider again the aid recipients Mexico and Mozambique. Figure 4 reports the aid shares of the top donors to each recipient per year from 1998 to 2014---1996 and 1997 now have to be dropped. In addition, it reports the lead donorship status of the top aid donors by the column shades. The darker the shade, the stronger the measure of lead donorship.
+
+```{r, fig.height=4, fig.width=10, fig.cap="Lead donorship of top donors to Mexico and Mozambique."}
+dt97 <- filter(dt, year > 1997)
+dt97 %>%
+  mutate(
+    donor_code = countrycode::countrycode(
+      donor, "country.name", "iso3c"
+    )
+  ) %>%
+  filter(
+    recipient %in% c("Mexico", "Mozambique")
+  ) %>%
+  group_by(recipient, year) %>%
+  transmute(
+    donor_code = donor_code,
+    lead_donor = lead_donor,
+    aid_share = aid / sum(aid),
+    aid_1st = aid_share == sort(aid_share, decreasing = T)[1]
+  ) %>%
+  filter(
+    aid_1st
+  ) %>%
+  ungroup %>%
+  mutate(
+    lead_donor = case_when(
+      lead_donor == 0 ~ "0",
+      lead_donor == 1/3 ~ "1/3",
+      lead_donor == 2/3 ~ "2/3",
+      TRUE ~ "1"
+    ) %>%
+      factor(
+        levels = c("0", "1/3", "2/3", "1")
+      )
+  ) -> plt_dt
+library(RColorBrewer)
+ggplot(plt_dt) +
+  aes(year, aid_share, label = donor_code,
+      fill = lead_donor) +
+  geom_col() +
+  geom_text(vjust = .5, hjust = 1, angle = 90,
+            color = "white", fontface = "bold") +
+  geom_text(
+    aes(label = round(aid_share*100)),
+    vjust = -.5
+  ) +
+  facet_wrap(~ recipient) + 
+  scale_x_continuous(
+    breaks = 1998:2014
+  ) +
+  scale_y_continuous(
+    labels = scales::percent,
+    limits = c(0, 1)
+  ) +
+  scale_fill_brewer(
+    palette = "Reds"
+  ) +
+  labs(
+    x = NULL,
+    y = "Aid Share",
+    fill = "Lead Donorship"
+  ) +
+  theme(
+    axis.text.x = element_text(
+      angle = 45, hjust = 1
+    ),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    legend.position = c(0.8, 0.75),
+    legend.background = element_rect(color = "black")
+  ) 
+```
+
+As it turns out, the measurement strategy does a fair job of identifying lead donorship. In the case of Mexico, the leadership of the United States is strongest precisely when it should be, based on its giving. Further, when its giving wanes, this is reflected in the US having a weaker measure of lead donorship or even being supplanted by other donors in a few years. Japan, for example has a modest degree of lead donorship in 1998 and 2000 (1/3), as does France in 2012 (1/3). Even so, as we would intuitively expect, the United States has non-zero lead donorship status for 12 of the 17 years from 1998 to 2014 and has full lead donorship status from 2003 to 2006 and again in 2010.
+
+Conversely, no donor rises to even a modest level of lead donorship status in Mozambique for the entire period from 1998 to 2014. Even from 2008 to 2014 when the US consistently holds the position of top donor, its level of giving is insufficient to earn it the lead donorship title. This is as would be expected given the historical widespread attention Mozambique receives from the donor community. In such a fragmented donor environment, lead donorship remains elusive.
+
+Figure 5 reports how the yearly average of lead donorship within aid recipients compares to the yearly average of HI. Interestingly, while HI---which measures the probability that two randomly drawn dollars of aid given to a recipient originate from the same donor---slightly declined from 1998 to 2014, lead donorship saw a relatively steady increase in recipients over this same period. This pattern runs counter to that reported by @steinwand2015. Though he summarizes lead donorship over a slightly different period, 1970 to 2010, even for the years that overlap with the results presented here, we identify opposite trends in lead donorship.
+
+```{r}
+## Define lead donorship by recipient:
+dt <- dt %>%
+  group_by(recipient, year) %>%
+  mutate(HI = sum(aid_share^2)) %>%
+  ungroup
+dt %>%
+  group_by(recipient, year) %>%
+  summarize(
+    lead_donor = max(lead_donor),
+    HI = mean(HI)
+  ) %>%
+  group_by(year) %>%
+  summarize(
+    lead_donor = mean(lead_donor),
+    HI = mean(HI)
+  ) -> year_dt
+```
+
+
+```{r, fig.height=3.75, fig.width=5, fig.cap="Values computed using the giving of 29 DAC countries across 24 development sectors to 127 recipient countries."}
+year_dt %>%
+  rename(
+    "Lead Donorship" = lead_donor
+  ) %>%
+  ungroup %>%
+  pivot_longer(
+    cols = c(HI, `Lead Donorship`)
+  ) %>%
+  ggplot() +
+  aes(
+    x = year,
+    y = value,
+    linetype = name
+  ) +
+  geom_line(size = 0.75) +
+  scale_x_continuous(
+    n.breaks = 10
+  ) +
+  labs(
+    x = "Year",
+    y = "Yearly Average per Recipient",
+    linetype = NULL
+  ) 
+```
+
+
+Part of the incongruence between these results lies in the choice of aid variable. While @steinwand2015 uses aid disbursements, I use aid commitments. The former often closely reflects the latter but with varying lags since commitments most closely match immediate changes in donor policy while disbursements represent downstream realizations of that policy over time. In a given year, Germany may commit a certain amount of aid to Indonesia, but that aid may be disbursed in installments over several years, for instance.
+
+An additional difference is my choice to use the OECD's Creditor Reporting System (CRS) to isolate aid dollars committed specifically toward the 24 development sectors defined by the OECD. The total package of aid donors give often includes funds for overhead, staffing, administration, etc. I exclude such costs since they can be highly idiosyncratic to donors and across recipients and do not capture the types of budget support, debt relief, and sector-specific resources that have greatest material relevance for recipient outcomes. That @steinwand2015 observes a decline in lead donorship over time may follow from the inclusion of overhead in aid totals---which will have increased across donors over time as aid agencies and start-up costs for projects grow. Including these funds, then, may have obscured the degree to which lead donorship across development sectors has, in fact, increased over time.
+
+With a measure of lead donorship in hand, the next section describes the method for measuring donor-recipient ties and need.
+
+# Measuring Need and Donor-Recipient Ties
+
+There are many measures that capture variation in donor interest in particular recipients and level of development need in developing countries. When examining only a small sample of studies, the count of unique covariates is staggering. Bueno de Mesquita and Smith (2009) and @berthelemyTichit2004 use 15 different measures each. Schraeder, Hook, and Taylor (1998) use over 20 and McKinlay and Little (1979) use over 30. 
+
+Including so many variables in a regression analysis is not difficult. The harder task is interpreting so many coefficients, each of which reflects only a partial relationship in the data. For these reasons, scholars like @achen2002 complain and @pearl2009 warn of the increasing complexity of causal relationships and room for potential for biases in regression analysis that arises with each new covariate added to the model. 
+
+The difficulties only worsen when incorporating interactions, as is the goal of this study. Even if measures of recipient need and donor-recipient ties could be reduced to just a handful of covariates, because both the collusion and elusive collusion hypotheses imply an interaction between these buckets of variables, the number of n-order interactions that would be required would strain our ability to draw sensible inferences and, worse yet, eat up valuable degrees of freedom in exponential fashion. 
+
+The empirical challenge, then, is not the identification of variables. Instead, the challenge lies in finding a satisfactory way of collapsing them along the two dimensions of interest---donor-recipient ties and recipient need.
+
+However, before proceeding, a caveat on the value of collapsing measures bears noting. While dimensionality reduction offers several advantages, it is not an appropriate choice in all circumstances. While some questions in international aid are truly about macro-level issues and thus could benefit from synthesizing a fewer number of measures out of many, other questions center on particular mechanisms that drive patterns in aid giving. For example, @bermeoLeblang2015 in their study test hypotheses linked to donor immigration policy and migrant political mobilization as factors driving foreign aid to migrant-sending countries. Aggregate variables would have been too blunt an instrument for testing these mechanisms. 
+
+By contrast, composite measures are valuable in this study given the focus on identifying general patterns in lead donorship given the interaction of recipient need and donor-recipient ties as singular concepts. By first reducing each to two variables, it is more tractable to quantify how their interaction influences donor behavior. Specifically, these measures make it possible to triangulate contexts where motives for donor giving will be primarily rooted in genuine interest in development promotion or in opportunistic efforts to exercise political influence to obtain policy deals and concessions from developing countries.
+
+There are many approaches to dimensionality reduction, some of which are more or less appropriate for the task at hand. Shrinkage approaches, such as LASSO, can be tuned to eliminate variables that have little predictive power with respect to an outcome from a model, and methods of feature projection can be used to combine a set of covariates into a single measure. An index could alternatively be constructed. The polity index, for example, is a composite of several component measures such as regime durability, regulation of chief executive recruitment, political competition, and so on [@marshallGurr2020]. 
+
+The method outlined here can be thought of as a blend of the feature projection and index construction approaches. Using an objective function, it finds the optimal set of weights with respect to both direction and magnitude to construct a linear combination (or index) given a set of component measures. The final product is optimized to maximally covary with its components, appropriately weighted on the basis of their variation. 
+
+Define a vector of $K > 1$ covariates as $(X_{i1},...,X_{ik}, ..., X_{iK}) = X_i \in X \subseteq \mathbb{R}^K$ and an objective function $f : \mathbb{R}^K \to \mathbb{R}$. Subscript $i$ indexes $N$ units of observation. The goal with the objective function $f$ is to identify a vector of weights $(\omega_i, ..., \omega_k, ..., \omega_K) = \omega \in \Omega \subseteq \mathbb{R}^K$ that optimize $f$ given $X_i$. Denote the $\hat \omega$ as the solution set of weights:
+$$\hat \omega = \underset{\omega \in \Omega}{\text{argmax}} \space f(\omega; X_i), \tag{1}$$
+and define the vector $Z_i$ as the optimal linear combination of the variables:
+$$Z_i = X_i^\top \hat \omega. \tag{2}$$
+
+Several functional forms might do for $f$, but one of the simpler is the sum of the squared covariances or SSC:
+$$f(\omega; X_i) = \sum_{k = 1}^K \text{cov}(X_{ik}; Z_i)^2. \tag{3}$$
+Squaring ensures that greater values indicate a stronger positive correlation between a variable $k$ and the linear combination $Z_i$ while also allowing $f$ to be continuously differentiable, which is a nice property for optimization.
+
+In words, this approach finds a linear combination of $K$ covariates such that said linear combination maximally covaries with each individual variable $k$. The end product is a variable $Z$ that maximally covaries with the set of components used in its construction.
+
+Because scale may be an issue when combining covariates, in practice it is advisable to standardize each of the covariates in the set $X_i$. The most commonly applied method is to mean center and scale covariates such that they have a standard deviation of 1. After the linear combination $Z$ is generated, it again is desirable to standardize the final output. Thus, $Z_i$ is simply a z-score representing variation in the composite measure of interest.
+
+Because much has been written about other existing approaches of dimensionality reduction (or linear projection), a comprehensive summary of each is beyond the scope of this paper. However, two popular alternatives are worth mentioning: principal components analysis (PCA) and multivariate factor analysis (MFA). These approaches are applied across a range of scientific fields to produce a smaller set of covariates from a much larger set for use in regression analysis. Why develop and use SSC when these other approaches are available?
+
+The answer to this question has both a theoretical and a practical element. With respect to the first, it is necessary to briefly discuss the intuitions behind PCA and MFA. The goal of the former is to find a multi-dimensional ellipsoid with axes that represent "principal components." Using the notation from above, the first such component is identified for a set of covariates $X_i$ by generating a set of weights where:
+$$\hat \omega = \underset{\omega \in \Omega}{\text{argmax}} \sum_{i = 1}^N(X_i^\top \omega)^2. \tag{4}$$
+Second-, third-, and $k$-order principal components are identified by first subtracting out the first and then repeating the procedure again in successive fashion.
+
+Keeping with the first principal component (since this is what we would use to generate the composite measures of interest), this method, in words, finds the variance maximizing set of weights. This approach obviously differs from that of SSC, which finds weights such that the linear combination of covariates maximally covaries with each component variable. This difference implies different kinds of information from the data that the resulting linear combinations capture. SSC provides a measure that is maximized to be correlated with its components, while PCA provides a measure that has maximum variance given the component measures. The former objective is better aligned with the goal of measurement creation. 
+
+MFA, unlike PCA, takes into account covariances in the data in the construction of "factors." MFA models observed covariates in $X_i$ as linear functions of latent factors $F_i$ where the number of factors is less than $K$. The idea is that groups of variables may move in common directions because they are the product of a smaller set of unobserved variables. For instance, variables like income, education, and employment status could be thought of as determined by a latent concept called socioeconomic status.
+
+In some ways MFA is closer in spirit to SSC than is PCA, but it still optimizes on a different objective, namely the extent to which variables are correlated *with each other*. This means that using the first factor from MFA (which we might try to do in constructing measures of interest for this study) may not capture all the variation in a concept that is of interest. If two variables are part and parcel of the same overall concept, but are not themselves strongly correlated, one of these may receive a much lower factor loading and thus contribute much less to the variation in the estimated factor. 
+
+SSC therefore provides advantages in constructing the composite measures of donor-recipient ties and development need. The next, challenge, of course, is to identify the appropriate component measures to construct each. 
+
+The concepts of donor-recipient ties and recipient need have some well established sets of measures that are used to proxy for each. Of course, the universe of available variables is quite large, and it would be excessive to include all possibly relevant measures. Instead, the selection of variables is narrowed down to four in the case of ties and five in the case of need. These choices certainly are not the only valid options, but they capture many of the most salient dimensions thought to correspond to each concept. Taken together, these choices reflect common measures used in the aid literature and capture a wide range of signals related to interest- and needs-based drivers of foreign aid.
+
+The need measure is composed of the following sub-measures:
+
+\bigskip
+
+- yearly per capita gross domestic product (GDP);
+- yearly population size;
+- the yearly number of individuals killed due to natural disasters;
+- an indicator for whether the recipient is experiencing a civil war in a given year;
+- the yearly level of political and civil liberties of a recipient.
+
+\bigskip
+
+The first two measures were drawn from version 9.1 of the Penn World Table (Feenstra, Inklaar, and Timmer 2015),\footnote{Available at https://doi.org/10.15141/S50T0R.} and were log-transformed to normalize values. The third, which captures the severity of natural disasters in a given year, is drawn from the Institute of Health Metrics and Evaluation’s database on natural disaster deaths reported by countries in a given year (2021).\footnote{Available at https://ghdx.healthdata.org/gbd-results-tool.} Values are transformed via the inverse hyperbolic since rather than the natural log to retain zero values. The indicator for civil war is drawn from the UCDP/PRIO armed conflict database (Gleditsch et al. 2002; Pettersson et al. 2021).\footnote{Available at https://ucdp.uu.se/downloads/index.html.} It takes the value 1 for all years where there was a violent conflict between at least two parties that involved the deaths of at least 25 combatants and which included the government as at least one of the parties in the conflict. The final measure, recipient civil and political liberties, is the sum of the Freedom House’s political rights and civil liberties scores for a given recipient country in a given year.\footnote{Available at https://freedomhouse.org/.} The rights and liberties scores each range from 1 to 7, with higher values denoting more violations. After summing the values, the scores were reversed so that higher values denote greater freedom.
+
+These measures contribute to an overall picture of the relative need developing countries have for economic assistance. They also relate in important ways. Level of income surely should matter to donors, but the size of the country contextualizes the relative importance of income. Conflict, too, not only contextualizes poverty, but can in many ways be a driver of it and be driven by it. Limited freedoms further directly play into both poverty and conflict, and vice versa. Natural disasters, meanwhile, are exogenous, but how many people are killed by them is both a function of total population size and a country’s ability to adequately respond. For all these reasons, estimating separate partial relationships in a regression analysis for all these variables poses obvious challenges for interpretation and may result in unreliable signs and magnitude of coefficients. But, by combining these measures into a single composite variable, we can gain greater insight into how the movement of need in its various manifestations predicates the public or rival goods donors obtain from their aid allocation.
+
+The measure of ties, meanwhile, is constructed from the following four variables:
+
+\bigskip
+
+- bilateral distance (in kilometers) between a donor and a recipient;
+- bilateral trade (in dollars) between a donor and a recipient;
+- an indicator for whether the donor and recipient are formal allies;
+- an indicator for whether the donor and recipient share a colonial past.
+
+\bigskip
+
+The first and second measures were taken from CEPII. Distance comes from CEPII’s gravity dataset (Mayer and Zignago 2011), and trade comes from CEPII’s TRADEHIST dataset (Fouquin and Hugot 2016).\footnote{Both available at } The former is log-transformed, while the latter is transformed via the inverse hyperbolic sine. The alliance measure is drawn from the ATOP database and takes the value 1 if the donor and recipient share an alliance (Leeds et al. 2002).\footnote{Available at http://www.atopdata.org/.} The colony measure comes from the same CEPII dataset as the bilateral distance measure, and takes the value 1 if the donor was a former colonizer of the recipient.
+
+Study of the role of such strategic factors as highlighted above has a well-established tradition in the literature. Extensive research has been done to test the range of foreign policy objectives that motivate foreign aid giving (Bearce and Tirone 2010; Bermeo 2017; Kilby and Dreher 2010; Kisangani and Pickering 2015; Round and Odedokun 2004; and van der Veen 2011). These studies and others usually subdivide donor interests under various umbrellas. The four measures included in the construction of ties capture four specific dimensions of donor interest: geographic, material, strategic, and social.
+
+Donors tend to give more aid to countries that are geographically closer, which suggests an interest in promoting influence within their sphere of influence. At the same time, proximity can make donors especially vulnerable to spillovers of developing country problesm (Bermeo 2017, 2018). Distance of course is inversely proportional to trade, a measure that captures donor’s material or economic interests. The correspondence between distance and trade may explain why regression analyses that include both measures have yielded conflicting results about the significance of distance.\footnote{Bueno de Mesquita and Smith (2009) fail to identify a significant coefficient on distance once they control for trade, while Bermeo (2017) does not observe such a reversal of statistical significance.} Alliances meanwhile reflect geostrategic objectives and security commitments between donors and recipients. Research on the specific role of alliances in predicting aid has only received limited attention from scholars, and then only in the context of total aid flows.\footnote{See Morgan and Palmer (2000) for an example.} However, the existence of signed treaty agreements between donors and recipients certainly provides material evidence of strategic interests. This implies a role for aid in helping donors provide their allies assurances of their security commitments. At the same time, if an ally suffers due to instability or natural disasters, this increases the salience of responding to recipient need. Colonial status, finally, captures historical ties between donors and recipients. Former colonies may not only be targeted by donors as a means to perpetuate influence, but also because of the enduring social connections between colony and colonizer (Alesina and Dollar 2000; Bermeo 2017).
+
+Of course, different measures might have been used to capture need and ties. Further, some measures associated with need---like political freedoms or civil war---could be alternatively argued to relate to donor interest. With respect to variable selection, these variables were chosen on the basis of availability and judgments about their ability to capture as much of a particular dimension of their associated concept as possible. For example, for geostrategic interests, measures other than alliances were considered such as arms transfers or military aid. However, the first did not provide as much coverage as alliance data---it contained invalid measures for a number of dyad years for which I do have valid measures for alliances. The second, meanwhile, is a measure that only exists in greatest detail and reliability for the United States. While some have used US military aid to proxy for the geostrategic interests of other donor governments (Bermeo 2017), there are reasons to use measures that are, at minimum, unique to the donor-recipient level.
+
+The choice to limit measures of donor interest to bilateral factors further relates to the decision to categorize variables like civil war and freedom as needs-based factors rather than interest-based. While the latter in particular has been argued to relate to donor foreign policy goals---such as supporting the democratic regimes of developing countries (Alesina and Dollar 2000)---it, and civil war as well, also provides substantive information about development need. Civil wars have been called by some as "development in reverse" because of the detrimental effects conflict can have on economies, security, and political stability (Stojek and Tir 2014). Civil and political freedoms, meanwhile, have been linked with long-term economic growth and societal development (Acemoglu et al. 2019). These measures, then, capture important signals about the overall development need of developing countries. Further, since they are measured at the recipient, rather than bilateral, level, it is hard to assess the unique signals they would capture about the interests of specific donor governments. As other scholars have argued, interest-based considerations imply that donor governments make their aid allocation decisions on the basis of their unique relationships with different recipient countries.\footnote{See Berthelemy (2006).} But at the same time that factors like democracy or conflict signal need, their correspondence with strategic goals actually strengthens the claim that low need may signal greater opportunity for donors to realize non-development foreign policy interests. This makes the aggregate empirical measure of need ideal for testing both the collusion and elusive collusion hypotheses.
+
+The measures of ties and need were constructed using data from 1995 to 2014, overlapping with the period covered by the CRS data used to capture lead donorship. Each measure was constructed by converting each of the relevant components to z-scores. The final linear combination produced using SSC was then normalized to reflect z-scores as well. The distribution of each is shown in Figure 6. Both follow relatively normal distributions, though ties has a somewhat left-skewed distribution.
+
+```{r fig.height=4, fig.width=8, fig.cap="Distribution of donor-recipient ties and recipient need."}
+dt %>%
+  select(ties, need) %>%
+  pivot_longer(
+    everything()
+  ) %>%
+  ggplot() +
+  aes(x = value) +
+  geom_histogram(
+    color = "black",
+    fill = "gray"
+  ) +
+  facet_wrap(~ name, scales = "free") +
+  labs(
+    x = NULL,
+    y = "Count"
+  ) +
+  scale_y_continuous(
+    labels = scales::comma
+  )
+```
+
+Figures 7 and 8 summarize the correlation between the measures of ties and need with their respective components. A correlation matrix is shown, where blue indicates a negative correlation and red a positive correlation. Shading is used to highlight the relative strength of the correlation. The bivariate correlation coefficient is shown as well. Figure 7 summarizes the correlations for the ties measure. The correlations are not only generally strong, but they run in the appropriate direction for the concept of donor-recipient ties. Stronger ties correspond with more bilateral trade, less geographical distance, sharing military alliances, and sharing a colonial past.
+
+```{r fig.height=4, fig.width=4, fig.cap="Correlation matrix for the composit measure of ties created via SSC and its components."}
+library(GGally)
+# dt %>%
+#   select(ties, ihs_trade, ihs_dist, ally, colony) %>%
+#   cor() -> ties_cor
+ties_dt <- dt %>%
+    select(ties, ihs_trade, ihs_dist, ally, colony)
+names(ties_dt) <- c(
+  "Ties", "Trade", "Distance",
+  "Allies", "Colony"
+)
+ggcorr(
+  ties_dt,
+  label = T
+) +
+  ggpal("diverging", "fill") +
+  theme(legend.position = "none")
+```
+
+Figure 8 shows correlations for need. Aagin, the measure captures variation in the components in the expected direction. Greater need corresponds with less GDP per capita (Income), greater population, more severe disasters, lower quality of democracy, and the presence of civil conflict.
+
+```{r fig.height=4, fig.width=4, fig.cap="Correlation matrix for the composit measure of need created via SSC and its components."}
+# dt %>%
+#   select(ties, ihs_trade, ihs_dist, ally, colony) %>%
+#   cor() -> ties_cor
+need_dt <- dt %>%
+    select(need, income, pop, ihs_disaster, fh_total, civilwar) %>%
+  mutate(income = log(income),
+         pop = log(pop))
+names(need_dt) <- c(
+  "Need", "Income", "Population", 
+  "Disaster", "Democracy", "Conflict"
+)
+ggcorr(
+  need_dt,
+  label = T
+) +
+  ggpal("diverging", "fill") +
+  theme(legend.position = "none")
+```
+
+
+# Research Design
+
+To test the collusion and elusive collusion hypotheses, variation in lead donorship is modeled as a joint function of recipient need and the concentration of donor-recipient ties. The analysis is done at the recipient-year level. The following empirical model is estimated:
+$$\text{logit}(\text{Lead Donorship}_{rt}) = s(\tau_{rt}, \nu_{rt}) + \alpha_t + \rho_r + \epsilon_{rt}. \tag{6}$$
+The outcome is the strength of lead donorship in a developing country for the top donor. The logit transformation is there to denote that the model is estimated using a quasi-binomial logit link using maximum likelihood (e.g., a fractional logit). This helps to ensure that fitted values for lead donorship remain constrained to the unit interval.
+
+The function $s(\cdot)$ is a multivariate nonlinear smoother that permits estimating the joint, interactive relationship between lead donorship and the measures of interest. This more flexible non-linear approach is adopted because the goal is to test not a simple directional linear hypothesis, but instead a set of conjoint conditions under which lead donorship will emerge. A multivariate smoother is not only sufficient for this task, it has the advantage of not being sensitive to the parametric assumptions that would attend a more conventional linear regression with a second order interaction term.
+
+The multivariate smoother has two variable inputs: $\tau_{rt}$ and $\nu_{rt}$. The first is a measure of donor tie concentration. After, first, using the SSC method outlined in the earlier discussion to create a measure of donor-recipient ties, an HI index of the ties variable was created at the recipient-year level. After log-transformation to normalize the data, the resulting measure, denoted $\tau_{rt}$, captures the degree to which ties between a recipient a donor country are concentrated in a single donor. Higher values equal greater concentration. 
+
+The measure $\nu_{rt}$ denotes the level of recipient need as constructed via SSC. Higher levels equal greater development need.
+
+The model contains two additional terms. $\alpha_t$ captures year specific intercepts that adjust for unobserved year-to-year shocks. This ensures that variation in lead donorship reflects within-year variation rather than across years. The second term, $\rho_r$ denotes recipient random effects that adjust for unobserved recipient level heterogeneity and dependence over time. The model is, of course, rounded off with a zero-mean error term.
+
+The data used to fit the model consists of 2,398 unique recipient-year observations from 1997 to 2014. These are comprised of a total of 133 unique developing country aid recipients.
+
+The analysis in the next section proceeds as follows. Before summarizing the main results, a dyadic analysis of donor aid commitments is done to provide some face validity for the measures of donor-recipient ties and recipient need. If the measures prove to be poor determinants of dyadic aid flows, this would raise doubts about their ability to help triangulate the publicness or rivalness and relative marginal returns of goods donors get from their aid allocation. A summary of the main analysis follows, along with some robustness checks.
+
+# Analysis
+
+It first may be helpful to validate the composite measures and check their performance in predicting dyadic aid commitments. Table 1 summarizes regression coefficients from five linear models. Each was estimated with OLS with standard errors clustered by dyad. All include year and donor fixed effects. They were estimated using a total of 68,856 dyad-year observations.
+
+```{r results='asis'}
+ols_fit1 <- lm_robust(
+  ihs_aid ~ 
+    ## dyadic factors
+    ihs_trade + ihs_dist + colony + ally +
+    ## recipient factors
+    log(income) + log(pop) + ihs_disaster + civilwar + fh_total,
+  data = dt,
+  fixed_effects = ~ year + donor,
+  se_type = "stata",
+  clusters = paste0(recipient, donor)
+)
+ols_fit2 <- lm_robust(
+  ihs_aid ~ 
+    ## dyadic factors
+    ties +
+    ## recipient factors
+    log(income) + log(pop) + ihs_disaster + civilwar + fh_total,
+  data = dt,
+  fixed_effects = ~ year + donor,
+  se_type = "stata",
+  clusters = paste0(recipient, donor)
+)
+ols_fit3 <- lm_robust(
+  ihs_aid ~ 
+    ## dyadic factors
+    ihs_trade + ihs_dist + colony + ally +
+    ## recipient factors
+    need,
+  data = dt,
+  fixed_effects = ~ year + donor,
+  se_type = "stata",
+  clusters = paste0(recipient, donor)
+)
+ols_fit4 <- lm_robust(
+  ihs_aid ~ 
+    ## dyadic factors
+    ties +
+    ## recipient factors
+    need,
+  data = dt,
+  fixed_effects = ~ year + donor,
+  se_type = "stata",
+  clusters = paste0(recipient, donor)
+)
+ols_fit5 <- lm_robust(
+  ihs_aid ~ 
+    ## dyadic factors
+    ties +
+    ## recipient factors
+    need +
+    ## interaction
+    ties:need,
+  data = dt,
+  fixed_effects = ~ year + donor,
+  se_type = "stata",
+  clusters = paste0(recipient, donor)
+)
+texreg(
+  list(ols_fit1, ols_fit2, ols_fit3, ols_fit4, ols_fit5),
+  include.ci = F,
+  caption = "OLS Estimates for Dyadic Aid Commitments",
+  caption.above = T,
+  custom.coef.names = c(
+    "Trade (asinh)",
+    "Distance (asinh)",
+    "Colony",
+    "Alliance",
+    "Income (log)",
+    "Population (log)",
+    "Disaster (asinh)",
+    "Civil War",
+    "Democracy",
+    "Ties",
+    "Need",
+    "Ties x Need"
+  ),
+  custom.gof.rows = list(
+    "Year FE" = rep("Yes", len = 5),
+    "Donor FE" = rep("Yes", len = 5),
+    "N" = rep(scales::comma(nrow(dt)), len = 5)
+  ),
+  include.nobs = F,
+  include.nclusts = F,
+)
+```
+
+Model 1 was estimated using each of the separate component measures used in the construction of ties and need. Model 2 replaces the separate measures for ties with the composite ties measure. Model 3 does the same, but for the need measure. Model 4 includes only the composite measures while excluding the components. Model 5 adds an interaction between ties and need.
+
+As would be expected with any method of dimensionality reduction, the R-squared value slightly worsens when the component measures are replaced by their composites. However, the reduction in variance explained is not substantial. Indeed, given the reduction from nine covariates to two, the composite measures explain an impressive amount of variation in dyadic aid commitments.
+
+The direction of the estimates is further consistent with what we would expect. Both stronger bilateral ties and greater recipient need correspond with greater bilateral aid commitments from donors. The results for Model 5 are especially interesting. There is a statistically significant and substantial positive interaction between donor-recipient ties and recipient need. This pattern lends additional support for Bermeo's (2017, 2018) targeted development framework. Importantly, Bermeo's argument implies an interaction between ties and need, but such an interaction was not estimated empirically. By fashioning composite measures of ties and need, an interaction is more feasible to estimate, and the results support the argument, namely, that donor governments are especially sensitive to recipient need when they share a stronger connection.
+
+These results are encouraging for the main analysis because they provide some face validity for the composite measures. Not only are they strong predictors of dyadic aid flows, but they also interact in accordance with recent developments in theory.
+
+The analysis now turns to the main results. Recall that the unit of observation is the recipient-year and the outcome of interest the strength of lead donorship for the top donor in a recipient. Table 2 reports estimates for two GAM logistic models. In one, the measure of ties and of need were given as inputs to separate smoothing functions. In the other, they were inputs to a joint smoothing function. Models were estimated using year fixed effects and recipient random effects. Values reported are not regression coefficients but effective degrees of freedom. The statistical significance of each corresponds to the overall quality of the fit for the smoother function. An EDF of 1 would imply a linear relationship while values of increasing magnitude indicate nonlinear relationships. The values reported in Table 2 imply a high degree of nonlinearity.
+
+```{r}
+## Aggregate the data
+hhi <- function(x) {
+  tot <- sum(x, na.rm=T)
+  pct <- x / tot
+  ssp <- sum(pct^2, na.rm=T)
+  ssp # return
+}
+dt %>%
+  group_by(
+    year, recipient
+  ) %>%
+  summarize(
+    lead_donor = max(lead_donor, na.rm=T),
+    ties_ssp = log(sum(ties_share^2, na.rm=T)),
+    need = mean(need, na.rm=T),
+    income = median(log(income), na.rm=T),
+    pop = median(log(pop), na.rm=T),
+    ihs_disaster = median(ihs_disaster, na.rm=T),
+    fh_total = median(fh_total, na.rm=T),
+    civilwar = median(civilwar, na.rm=T),
+    ihs_trade = log(hhi(trade)),
+    ihs_dist = log(hhi(dist)),
+    ally = mean(ally, na.rm=T),
+    colony = mean(colony, na.rm=T)
+  ) %>%
+  mutate(
+    num_dyad = as.numeric(as.factor(recipient))
+  )-> agg_dt
+
+## Estimate the GAM model
+library(mgcv)
+gam_fit1 <- gam(
+  lead_donor ~ s(ties_ssp) + s(need) + 
+    as.factor(year) + 
+    s(num_dyad, bs = "re"),
+  data = agg_dt,
+  method = "REML",
+  family = quasibinomial
+)
+gam_fit2 <- gam(
+  lead_donor ~ s(ties_ssp, need) + 
+    as.factor(year) + 
+    s(num_dyad, bs = "re"),
+  data = agg_dt,
+  method = "REML",
+  family = quasibinomial
+)
+```
+
+
+```{r results='asis'}
+library(estimatr)
+library(texreg)
+texreg(
+  list(Separate = gam_fit1, Joint = gam_fit2),
+  custom.coef.map = list(
+    "EDF: s(ties_ssp)" = "Ties Concentration",
+    "EDF: s(need)" = "Recipient Need",
+    "EDF: s(ties_ssp,need)" = "Joint Ties and Need"
+  ),
+  caption = "Logistic GAM Estimates",
+  caption.above = T,
+  include.aic = F,
+  include.bic = F,
+  include.log = F,
+  include.nsmooth = F,
+  include.nobs = F,
+  include.nclusts = F,
+  digits = 3,
+  custom.gof.rows = list(
+    "Year FE" = rep("Yes", len = 2),
+    "Recipient RE" = rep("Yes", len = 2),
+    "N" = c(scales::comma(nrow(agg_dt)), 
+            scales::comma(nrow(agg_dt))),
+    "Recipients" = c(scales::comma(length(unique(agg_dt$recipient))),
+                scales::comma(length(unique(agg_dt$recipient))))
+  )
+) %>% cat()
+```
+
+A comparison of the separate and joint smoothers for ties concentration and need provides clear reason to favor a joint smoother. As shown in the model diagnostics, with the joint smoother the model explains approximately double the variation in lead donorship. This is consistent with both the collusion (H1) and elusive collusion (H2) hypotheses which hold recipient need interacts with concentration of marginal returns from aid to determine lead donorship. However, this conclusion is as far as an examination of Table 2 can take us. Because of the nonlinear and interactive relationship implied by the model, visualization of the results is necessary to see how ties and need jointly predict lead donorship.
+
+Figure 9 summarizes these predictions. Along the x-axis is variation in recipient need. The y-axis shows variation in the concentration of donor ties. Across the range of possible values of each measure, the likelihood of lead donorship is plotted. Blue denotes that the probability of lead donorship is less than 50% while red indicates that the probability is greater than 50%. Arrows help to highlight the direction of an increase in the likelihood of lead donorship.
+
+
+```{r fig.height=4.5, fig.width=4, fig.cap="Predicted (%) likelihood of lead donorship given recipient need and concentration of donor-recipient ties. Fitted logistic GAM estimates using recipient-year data from 1997-2014."}
+pred_data <- expand_grid(
+  ties_ssp = seq(-5, 0, len = 20),
+  need = seq(-2, 2, len = 20),
+  num_dyad = 1,
+  year = 2001
+)
+pred_data %>%
+  mutate(
+    pred = predict(gam_fit2, newdata = ., type = "response")
+  ) -> pred_data
+dy <- Derivate(pred ~ need + ties_ssp, data = pred_data)
+pred_data %>%
+  mutate(
+    dy.p1 = dy$pred.dneed,
+    dy.p2 = dy$pred.dties_ssp
+  ) -> pred_data
+ggplot(pred_data) +
+  aes(
+    x = need,
+    y = ties_ssp,
+    z = pred
+  ) +
+  geom_contour_fill() +
+  geom_arrow(
+    aes(dx = dy.p1, dy = dy.p2),
+    color = "gray20"
+  ) +
+  ggpal(
+    type = "diverging",
+    aes = "fill",
+    breaks = c(0.25, 0.5, 0.75),
+    labels = scales::percent,
+    midpoint = 0.5
+  ) +
+  labs(
+    x = expression(
+      "Recipient Need (" * nu[r][t] * ")"
+    ),
+    y = expression(
+      "Concentration of Ties (" * tau[r][t] * ")" 
+    ),
+    fill = "Likelihood of\nLead Donorship",
+    caption = expression(""%->%" Direction of Greater Lead Donorship")
+  ) +
+  theme(
+    legend.position = "top"
+  )
+```
+
+Both the collusion and elusive collusion hypotheses imply different corners of the figure in which we should see lead donorship arise with the greatest likelihood. Collusion implies that lead donorship should emerge disproportionately in the upper left quadrant, while an absence of collusion implies that lead donorship should emerge more often in the upper right. 
+
+The results in Figure 9 leave little to the imagination. Lead donorship clearly occurs with the greatest frequency at the intersection of both high recipient need and strongly concentrated donor-recipient ties. This is consistent with the elusive collusion hypothesis. That is, the pattern in lead donorship is what we would expect if donors fail to cooperate in the delineation of spheres of influence with rival goods and fail to mitigate free-riding with public goods.
+
+```{r}
+# logit_fit <- gam(
+#   lead_donor ~ ties_ssp * need + s(dyad_num, bs = "re") +
+#     as.factor(year),
+#   data = agg_dt,
+#   family = quasibinomial,
+#   method = "REML"
+# )
+# linear_fit <- gam(
+#   lead_donor ~ ties_ssp * need + s(dyad_num, bs = "re") +
+#     as.factor(year),
+#   data = agg_dt,
+#   method = "REML"
+# )
+# texreg(
+#   list("Logit" = logit_fit, "OLS" = linear_fit),
+#   caption = "Parametric Logit and OLS Estimates",
+#   custom.coef.map = list(
+#     "ties_ssp" = "Ties Concentration",
+#     "need" = "Need",
+#     "ties_ssp:need" = "Ties Concentration x Need"
+#   ),
+#   caption.above = T,
+#   include.aic = F,
+#   include.bic = F,
+#   include.log = F,
+#   include.nsmooth = F,
+#   include.nobs = F,
+#   include.nclusts = F,
+#   digits = 3,
+#   custom.gof.rows = list(
+#     "Year FE" = rep("Yes", len = 2),
+#     "Recipient RE" = rep("Yes", len = 2),
+#     "N" = c(scales::comma(nrow(agg_dt)), 
+#             scales::comma(nrow(agg_dt))),
+#     "Recipients" = c(scales::comma(length(unique(agg_dt$recipient))),
+#                 scales::comma(length(unique(agg_dt$recipient))))
+#   )
+# ) %>% cat()
+```
 
 # Conclusion
 
-[Ditto]
+Steinwand (2015) was the first to identify lead donorship as an important concept in international development, both for its importance for aid effectiveness and its connection to donor government collusion. This study builds on this research by trying to identify why lead donorship emerges. Is it a product of collusion, or is it a product of an uncooperative equilibrium? This is a question that has yet to be answered and one that has important theoretical and normative implications.
+
+Building on past research and theoretical arguments, two competing hypotheses---*collusion* and *elusive collusion*---were tested. Each corresponded with a different expected pattern in the distribution of lead donorship across developing countries given two factors: recipient need and the concentration of donor-recipient ties.
+
+Beginning with the assumptions that recipient need is proportional to the public goods properties of foreign aid allocation and that the relative strength of donor-recipient ties is proportional to the marginal returns donors receive from aid allocation, both hypotheses hold that lead donorship should emerge when ties are concentrated in a single donor. However, collusion further implies that this will be the case primarily when recipient need is low while the absence of collusion implies that this will be the case when recipient need is high. In the first case, lead donorship follows follows from a cooperative delineation of spheres of influence among donors. In the second, lead donorship follows from uncooperative buck-passing.
+
+Using novel measures that capture each of these dimensions and a nonparametric modeling approach, the results show that lead donorship emerges with the greatest likelihood at the intersection of highly concentrated donor-recipient ties and deep development need. This pattern is consistent with systematic *un*collusive behavior among donors.
+
+This finding matters for ongoing policy debates and raises important theoretical questions. The seeming failure to identify much collusive behavior among donors (at least at a macro level) is frustrating in light of decades-long efforts to spur greater donor cooperation. From a theoretical perspective, systemic cooperation failure begs the question as to why collusion is so elusive. Are there features of the strategic environment that donors and recipients inhabit that prevent cooperation? In addition, is aid effectiveness improved or worsened by virtue of when and where lead donorship emerges? Answers to these questions will help untangle the deeper mechanisms that prevent more widespread cooperation and whether this really is relevant for aid effectiveness.
 
 \clearpage 
-
-# Appendix
-
-We can devise a relatively simple model of public goods provision as follows. Say we have two actors $i = 1, 2$ where $i \neq j$ who derive utility from the provision of a public good $G \in \mathbb{R}_+$ and private consumption $v_i \in \mathbb{R}_+$.
-
-Let the supply of the public good be a linear function of the sum of individual actor contributions:
-$$G = g_1 + g_2.$$
-
-Let each actor be endowed with income $I_i = I_j > 0$. Define utility for $i$ as:
-$$u_i(g_i, v_i; g_j) = \left( g_i + g_j\right)^{\alpha_i} \times v_i.$$
-The parameter $\alpha_i > 0$ captures returns to $i$ from the public good.
-
-Each actor as the constrained optimization problem:
-$$\max_{g_i, v_i \in \mathbb{R}_+^2} u_i(g_i, v_i; g_j) \quad : \quad I_i \geqslant g_i + v_i.$$
-
-Applying the Kurush-Khun-Tucker or KKT conditions, we have the following best response function for $i$, assuming an interior solution:
-$$g_i(I_i, g_j) = \frac{\alpha_i}{1 + \alpha_i} I_i - \frac{1}{1 + \alpha_i} g_j.$$
-
-We can show from this that:
-
-\bigskip
-
-> **Proposition 1**: *An increase in an actor's returns from the public good (1) decreases the magnitude of it's response to the supply of the public good from the other actor and (2) increases its baseline supply of the public good.*
-
-\bigskip
-
-\hrulefill
-
-### Proof
-
-The proof proceeds in two parts. First, to show that $i$'s response to $j$ declines in proportion to $\alpha_i$ consider that:
-$$\partial g_i /\partial g_j = - \frac{1}{1 + \alpha_i} < 0.$$
-
-Given that $\alpha_i > 0$, this implies that for any $\alpha_i$ $i$'s response to an increase in the supply of the public good from $j$ will be to reduce it's own contribution. However, note further that:
-$$\partial^2 g_i / \partial g_j \partial \alpha_i = \frac{1}{(1 + \alpha_i)^2} > 0$$
-
-The positive cross-partial derivative alerts us to the fact that as $\alpha_i \to \infty$, $\partial g_i / \partial g_j \to 0$. In words, the more $i$ cares about $G$, the less reactive it is to $j$'s contribution to the public good.
-
-Next, to show that $i$'s baseline contribution to the public good is greater with $\alpha_i$ consider that
-$$\partial g_i/\partial \alpha_i = \frac{I_i + g_j}{(1 + \alpha_i)^2} > 0.$$
-Hence, all else equal, $g_i$ increases with $\alpha_i$.
-
-\hfill $\blacksquare$
-
-\hrulefill
-
-\bigskip
-
-Define $G^* = g_1^* + g_2^*$ as the equilibrium level of public good supplied by the actors. To identify the unique contributions of both actors, we can proceed by substitution as follows:
-$$
-\begin{aligned}
-g_i^* & = \frac{\alpha_i}{1 + \alpha_i} I_i - \frac{1}{1 + \alpha_i}\left[ \frac{\alpha_j}{1 + \alpha_j} I_j - \frac{1}{1 + \alpha_j } g_i^* \right], \\
-g_i^* - \frac{1}{(1 + \alpha_i)(1 + \alpha_j)} g_i^* & = 
-\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j, \\
-g_i^* & = \frac{\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j}{1 - \frac{1}{(1 + \alpha_i)(1 + \alpha_j)}}.
-\end{aligned}
-$$
-
-It can be shown that:
-
-\bigskip
-
-> **Proposition 2**: *The actor with greater returns from the public good will contribute more toward the good than the actor with lower returns from the public good, all else equal.*
-
-\bigskip
-
-### Proof
-
-\hrulefill
-
-To show that if $\alpha_i > \alpha_j$ then $g_i^* > g_j^*$ we must show that:
-$$
-\frac{\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j}{1 - \frac{1}{(1 + \alpha_i)(1 + \alpha_j)}} > 
-\frac{\frac{\alpha_j}{1 + \alpha_j} I_j - \frac{\alpha_i}{(1 + \alpha_j)(1 + \alpha_i)} I_i}{1 - \frac{1}{(1 + \alpha_j)(1 + \alpha_i)}}.
-$$
-
-We first can simplify:
-$$
-\begin{aligned}
-\frac{\alpha_i}{1 + \alpha_i} I_i - \frac{\alpha_j}{(1 + \alpha_i)(1 + \alpha_j)} I_j & > 
-\frac{\alpha_j}{1 + \alpha_j} I_j - \frac{\alpha_i}{(1 + \alpha_j)(1 + \alpha_i)} I_i, \\
-I_i\left[\frac{\alpha_i}{1 + \alpha_i} + \frac{\alpha_i}{(1 + \alpha_i)(1 + \alpha_j)}\right] & > I_j\left[\frac{\alpha_j}{1 + \alpha_j} + \frac{\alpha_j}{(1 + \alpha_j)(1 + \alpha_i)}\right],\\
-\frac{\alpha_i}{1 + \alpha_i} - \frac{\alpha_j}{1 + \alpha_j} & > 
-\frac{\alpha_j - \alpha_i}{(1 + \alpha_i)(1 + \alpha_j)}.
-\end{aligned}
-$$
-
-By definition, the above condition is true for any $\alpha_i > \alpha_j$. The left-hand side of the inequality is strictly positive, while the right-hand side is negative. Hence, it must be the case that if $\alpha_i > \alpha_j$, then $g_i^* > g_j^*$.
-
-\hfill $\blacksquare$
-
-\hrulefill
-
-\bigskip
-
-\clearpage
 
 # References
 \setlength{\parindent}{-0.2in}
