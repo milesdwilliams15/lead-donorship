@@ -1,0 +1,24 @@
+---
+output: stevetemplates::memo
+fontfamily: mathpazo
+fontsize: 11pt
+geometry: margin=1in
+header-includes:
+   - \linespread{1.05}
+
+from: Miles D. Williams
+to: The Editorial Team at BJPS
+subject: Article Submission
+date: "`r format(as.Date('2023-05-10'), '%d %B, %Y')`"
+memorandum: false
+#graphics: true
+#width: .3
+#logoposition: right
+#logo: taylor-swift-logo.png
+---
+  
+I wish to submit this manuscript entitled, "Cooperation or Competitive Equilibrium? The Determinants of Lead Donorship in International Development," for consideration at the *British Journal of Political Science*. I can confirm that this manuscript is original and not currently under consideration at another academic journal.
+
+Why do some industrialized countries come to take the lead in providing foreign aid to individual developing countries? Lead donorship---a condition of sustained outsized responsibility by a single donor government for the foreign aid received by a developing country---has been proposed to be linked to aid effectiveness. But its consequences depend on the context that gives rise to it. Is lead donorship a product of a collusive delineation of spheres of influence among donor governments? Or else, is it a product of uncooperative buck-passing? This study adopts novel measures and a powerful semi-parametric research design to find an answer.
+
+The results show that lead donorship follows a pattern consistent with uncooperative behavior. This has important theoretical and normative implications. It also raises new questions. Why is collusion so elusive? Is lead donorship beneficial or harmful for aid effectiveness? It is my hope that *BJPS* will provide the appropriate platform for spurring future research on these weighty questions---questions that I believe should be a general interest to the readers of your journal.
