@@ -5,11 +5,13 @@ output:
 #bibliography: master.bib
 biblio-style: apsr
 title: "Cooperation or Competitive Equilibrium? The Determinants of Lead Donorship in International Development"
-thanks: "**Corresponding author**: williamsmd@denison.edu."
-author:
-- name: Miles D. Williams
-  affiliation: Denison University
-abstract: "Is lead donorship the product of collusion or does collusion elude donor governments? The phenomenon of lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---has garnered attention for its proposed ability to foster greater coordination among donor governments by limiting inefficient donor competition and free-riding. But the pro-cooperation properties of lead donorship lie downstream from the strategic context that gives rise to it. Building on an existing theory that embeds lead donorship in a framework characterizing the public and private goods properties of international aid, this study shows that the observed pattern of lead donorship is consistent with uncooperative behavior. This is done using novel measures of donor foreign policy interest and recipient development need and a research design that helps to triangulate when and where aid produces public and private goods for donor governments."
+#thanks: "**Corresponding author**: williamsmd@denison.edu; **Word Count**: `r scales::comma(wordcountaddin::word_count(here::here('03_report', '01_draft.Rmd')))`"
+thanks: "**Word Count**: `r scales::comma(wordcountaddin::word_count(here::here('03_report', '01_draft.Rmd')))`"
+# author:
+# - name: Miles D. Williams
+#   affiliation: Denison University
+abstract: "When one industrialized country takes the lead in providing foreign aid to developing countries, is this due to donor collusion or uncooperative free-riding? The phenomenon of lead donorship---a condition of sustained outsized responsibility by one bilateral donor government for providing development assistance to a developing country---has garnered attention for its links to aid effectiveness. But whether it arises due to cooperation or uncooperative behavior determines its implications for recipient development. Building on existing theory that embeds lead donorship in a framework characterizing the public and private goods properties of international aid, this study shows that the observed pattern of lead donorship is consistent with uncooperative behavior. This is done using novel measures of donor foreign policy interest and recipient development need and a research design that helps to triangulate when and where aid produces public and private goods for donor governments. The findings raise new questions for theory and policy. Why is collusion elusive in international development? And what are the effects for aid effectiveness?"
+keywords: foreign aid, lead donorship, cooperation
 # date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
 fontfamily: cochineal
@@ -18,3 +20,4 @@ fontsize: 12pt
 endnote: no
 ---
 
+\thispagestyle{empty}
