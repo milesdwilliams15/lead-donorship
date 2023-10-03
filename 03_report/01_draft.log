@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.8.26)  16 MAY 2023 15:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.8.26)  3 OCT 2023 16:27
 entering extended mode
 **./01_draft.tex
 (01_draft.tex
@@ -822,6 +822,9 @@ LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
 
 LaTeX Warning: Label `table:coefficients' multiply defined.
 
+
+LaTeX Warning: Label `table:coefficients' multiply defined.
+
 )
 \openout1 = `01_draft.aux'.
 
@@ -928,124 +931,126 @@ LaTeX Font Info:    Font shape `T1/Cochineal-TLF/b/n' will be
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 233.
-[2] [3]
-Overfull \hbox (3.63132pt too wide) in paragraph at lines 339--349
-[]\T1/Cochineal-TLF/m/n/12 Like free-riding, com-pe-ti-tion is in-ef-fi-cient f
-rom a donor wel-fare per-spec-tive be-cause it leads donors
- []
-
-[4] [5] [6] [7] [8] [9] [10] <figs/unnamed-chunk-1.pdf, id=36, 289.08pt x 289.0
-8pt>
+(Font)              scaled to size 12.0pt on input line 249.
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] <figs/unnamed-chunk-1.pdf, id=42
+, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-1.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-1.pdf used on input line 640.
+Package pdftex.def Info: figs/unnamed-chunk-1.pdf used on input line 694.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-<figs/unnamed-chunk-2.pdf, id=37, 289.08pt x 289.08pt>
+<figs/unnamed-chunk-2.pdf, id=43, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-2.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-2.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-2.pdf used on input line 658.
+Package pdftex.def Info: figs/unnamed-chunk-2.pdf used on input line 712.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
 
-Overfull \hbox (20.24002pt too wide) in paragraph at lines 665--672
+Overfull \hbox (20.24002pt too wide) in paragraph at lines 719--726
 []\T1/Cochineal-TLF/m/n/12 These pre-dic-tions are straight-for-ward, but test-
 ing them em-pir-i-cally is not. Need is a multi-dimensional
  []
 
-[11] [12 <./figs/unnamed-chunk-1.pdf>] [13 <./figs/unnamed-chunk-2.pdf>] <figs/
-unnamed-chunk-3.pdf, id=60, 722.7pt x 289.08pt>
+[13 <./figs/unnamed-chunk-1.pdf>] [14 <./figs/unnamed-chunk-2.pdf>] <figs/unnam
+ed-chunk-3.pdf, id=63, 722.7pt x 289.08pt>
 File: figs/unnamed-chunk-3.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-3.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-3.pdf used on input line 696.
+Package pdftex.def Info: figs/unnamed-chunk-3.pdf used on input line 750.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 709.
+LaTeX Font Info:    Try loading font information for U+msa on input line 763.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 709.
+LaTeX Font Info:    Try loading font information for U+msb on input line 763.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 717.
+(Font)              scaled to size 8.0pt on input line 771.
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 717.
+(Font)              scaled to size 10.0pt on input line 771.
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 717.
-[14] [15 <./figs/unnamed-chunk-3.pdf>]
+(Font)              scaled to size 7.0pt on input line 771.
+[15] [16 <./figs/unnamed-chunk-3.pdf>]
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 738.
-[16] [17] <figs/unnamed-chunk-4.pdf, id=88, 722.7pt x 289.08pt>
+(Font)              scaled to size 6.0pt on input line 792.
+[17] [18] <figs/unnamed-chunk-4.pdf, id=91, 722.7pt x 289.08pt>
 File: figs/unnamed-chunk-4.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-4.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-4.pdf used on input line 861.
+Package pdftex.def Info: figs/unnamed-chunk-4.pdf used on input line 911.
 (pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
-[18 <./figs/unnamed-chunk-4.pdf>] <figs/unnamed-chunk-6.pdf, id=99, 361.35pt x 
-271.0125pt>
+[19 <./figs/unnamed-chunk-4.pdf>] <figs/unnamed-chunk-6.pdf, id=103, 361.35pt x
+ 271.0125pt>
 File: figs/unnamed-chunk-6.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-6.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-6.pdf used on input line 897.
+Package pdftex.def Info: figs/unnamed-chunk-6.pdf used on input line 954.
 (pdftex.def)             Requested size: 361.34912pt x 271.01183pt.
-[19] [20 <./figs/unnamed-chunk-6.pdf>] [21] [22] [23] [24]
+[20] [21 <./figs/unnamed-chunk-6.pdf>] [22] [23]
 LaTeX Font Info:    Try loading font information for TS1+Cochineal-TLF on input
- line 1110.
+ line 1095.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cochineal\ts1cochineal-tlf.fd"
 File: TS1Cochineal-TLF.fd 2016/01/19 (msharpe) Font definitions for TS1/Cochine
 al-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1110.
-[25]
-Overfull \hbox (2.71501pt too wide) in paragraph at lines 1185--1197
+(Font)              scaled to size 12.0pt on input line 1095.
+[24]
+Overfull \hbox (2.71501pt too wide) in paragraph at lines 1170--1182
 []\T1/Cochineal-TLF/m/n/12 The first and sec-ond mea-sures were taken from CEPI
 I. Dis-tance comes from CEPII's grav-ity dataset
  []
 
-[26] [27]
+[25] [26]
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 1277.
-<figs/unnamed-chunk-7.pdf, id=138, 578.16pt x 289.08pt>
+(Font)              scaled to size 10.0pt on input line 1262.
+[27] <figs/unnamed-chunk-7.pdf, id=135, 578.16pt x 289.08pt>
 File: figs/unnamed-chunk-7.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-7.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-7.pdf used on input line 1289.
+Package pdftex.def Info: figs/unnamed-chunk-7.pdf used on input line 1278.
 (pdftex.def)             Requested size: 469.75385pt x 234.8769pt.
-[28] <figs/unnamed-chunk-8.pdf, id=142, 289.08pt x 289.08pt>
+[28 <./figs/unnamed-chunk-7.pdf>] <figs/unnamed-chunk-8.pdf, id=144, 289.08pt x
+ 289.08pt>
 File: figs/unnamed-chunk-8.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-8.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-8.pdf used on input line 1306.
+Package pdftex.def Info: figs/unnamed-chunk-8.pdf used on input line 1295.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-<figs/unnamed-chunk-9.pdf, id=143, 289.08pt x 289.08pt>
+<figs/unnamed-chunk-9.pdf, id=145, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-9.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-9.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-9.pdf used on input line 1319.
+Package pdftex.def Info: figs/unnamed-chunk-9.pdf used on input line 1308.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-[29 <./figs/unnamed-chunk-7.pdf>] [30 <./figs/unnamed-chunk-8.pdf> <./figs/unna
-med-chunk-9.pdf>] [31] [32] [33] [34] <figs/unnamed-chunk-13.pdf, id=179, 289.0
-8pt x 325.215pt>
+[29 <./figs/unnamed-chunk-8.pdf>] [30 <./figs/unnamed-chunk-9.pdf>] [31] [32] [
+33] [34] <figs/unnamed-chunk-13.pdf, id=178, 289.08pt x 325.215pt>
 File: figs/unnamed-chunk-13.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-13.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-13.pdf used on input line 1540.
+Package pdftex.def Info: figs/unnamed-chunk-13.pdf used on input line 1529.
 (pdftex.def)             Requested size: 289.09251pt x 325.22908pt.
-[35] [36 <./figs/unnamed-chunk-13.pdf>] [37] [38] [39
+[35 <./figs/unnamed-chunk-13.pdf>] <figs/unnamed-chunk-16.pdf, id=189, 289.08pt
+ x 325.215pt>
+File: figs/unnamed-chunk-16.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-16.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-16.pdf used on input line 1616.
+(pdftex.def)             Requested size: 289.09251pt x 325.22908pt.
+[36] [37] [38 <./figs/unnamed-chunk-16.pdf>] [39] [40] [41
 
-] [40] [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1779.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1779.
+] [42] [43] [44
+
+] [45] [46] [47]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2025.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2025.
 (01_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1779.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1779.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2025.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2025.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12144 strings out of 493335
- 171618 string characters out of 3136680
- 253364 words of memory out of 3000000
- 15497 multiletter control sequences out of 15000+200000
+ 12158 strings out of 493335
+ 171996 string characters out of 3136680
+ 253663 words of memory out of 3000000
+ 15511 multiletter control sequences out of 15000+200000
  124905 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,36p,804b,418s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,11n,36p,804b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cochineal/coch_wpmcrv.enc}
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cochineal/coch_hl6u4r.enc}{C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cochineal/coch_ykcvhy.enc}<C:/
@@ -1061,9 +1066,9 @@ pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program
  Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 01_draft.pdf (41 pages, 345735 bytes).
+Output written on 01_draft.pdf (47 pages, 379149 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
+ 280 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
