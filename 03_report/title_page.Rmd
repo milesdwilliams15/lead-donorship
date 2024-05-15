@@ -2,22 +2,24 @@
 output: 
   stevetemplates::article:
     fig_caption: true
-#bibliography: master.bib
+bibliography: ref.bib
 biblio-style: apsr
-title: "Cooperation or Competitive Equilibrium? The Determinants of Lead Donorship in International Development"
-#thanks: "**Corresponding author**: williamsmd@denison.edu; **Word Count**: `r scales::comma(wordcountaddin::word_count(here::here('03_report', '01_draft.Rmd')))`"
-thanks: "**Word Count**: `r scales::comma(wordcountaddin::word_count(here::here('03_report', '01_draft.Rmd')))`"
-# author:
-# - name: Miles D. Williams
-#   affiliation: Denison University
-abstract: "Do foreign aid donor governments collaborate by carving out spheres of influence in the pursuit of private foreign policy objectives while simultaneously minimizing free-riding in support of public goods? This study seeks to answer this question by leveraging a concept called lead donorship and novel measures that help to triangulate foreign aid's private and public goods benefits. The findings, based on a semi-parametric modeling approach, reveal a lack of systematic donor cooperation in foreign aid allocation, raising questions about its impact on aid effectiveness. These results contribute to the understanding of cooperation failure in aid allocation and its policy implications."
+title: "Elusive Collaboration? The Determinants of Lead Donorship in International Development"
+thanks: "**Corresponding author**: williamsmd@denison.edu. The author has no conflict of interest to report and did not receive funding for this research. Data and replication materials are available on the author's GitHub page at: https://github.com/milesdwilliams15. In addition to the three annonymous reviewers, I would like to thank Matthew S. Winters, Xinyuan Dai, Robert D. Pahre, Robert J. Carroll, Alice Iannantuoni, Tobias Heinrich, and many others who provided feedback on previous and related iterations of this manuscript."
+author:
+ - name: Miles D. Williams
+ - affiliation: Data for Political Research, Denison University, Granville, OH, USA.
+abstract: "**Abstract**: Lead donorship is a condition of stustained outsided responsibility by one foreign aid donor country for giving aid to a developing country. Prior research argues that lead donorship can either be a product of donors collaborating to carve out spheres of influence to maximize non-development foreign policy goals or else of donors buck-passing responsibility for addressing recipient needs. Which is it? This study seeks to answer this question using theory-driven expectations about when and where lead donorship should arise if donors cooperate or systematically fail to do so. It further develops novel measures of foreign aid's public goods characteristics and donors' marginal returns from giving aid that should help triangulate conditions under which we can expect lead donorship to arise due to cooperation or else its absence. Estimates from a flexible semi-parametric modeling strategy show that when and where lead donorship has the highest probability of occurring is consistent with systematic cooperation failure in the allocation of foreign aid. Various robustness checks are done and alternative explanations are also discussed. These findings provide insight into ongoing policy debates about donor cooperation and aid effectiveness and raise questions about what deeper strategic logics preclude donor cooperation."
 keywords: foreign aid, lead donorship, cooperation
 # date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
 fontfamily: cochineal
 fontsize: 12pt
-# spacing: double
+spacing: double
 endnote: no
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 \thispagestyle{empty}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.8.26)  3 OCT 2023 16:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2017.8.26)  14 MAY 2024 20:58
 entering extended mode
 **./01_draft.tex
 (01_draft.tex
@@ -618,6 +618,161 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \c@hypothesis=\count93
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen118
+\lightrulewidth=\dimen119
+\cmidrulewidth=\dimen120
+\belowrulesep=\dimen121
+\belowbottomsep=\dimen122
+\aboverulesep=\dimen123
+\abovetopsep=\dimen124
+\cmidrulesep=\dimen125
+\cmidrulekern=\dimen126
+\defaultaddspace=\dimen127
+\@cmidla=\count94
+\@cmidlb=\count95
+\@aboverulesep=\dimen128
+\@belowrulesep=\dimen129
+\@thisruleclass=\count96
+\@lastruleclass=\count97
+\@thisrulewidth=\dimen130
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip50
+\LTright=\skip51
+\LTpre=\skip52
+\LTpost=\skip53
+\LTchunksize=\count98
+\LTcapwidth=\dimen131
+\LT@head=\box27
+\LT@firsthead=\box28
+\LT@foot=\box29
+\LT@lastfoot=\box30
+\LT@cols=\count99
+\LT@rows=\count100
+\c@LT@tables=\count101
+\c@LT@chunks=\count102
+\LT@p@ftn=\toks21
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen132
+\extrarowheight=\dimen133
+\NC@list=\toks22
+\extratabsurround=\skip54
+\backup@length=\skip55
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
+\bigstrutjot=\dimen134
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
+\wrapoverhang=\dimen135
+\WF@size=\dimen136
+\c@WF@wrappedlines=\count103
+\WF@box=\box31
+\WF@everypar=\toks23
+Package: wrapfig 2003/01/31  v 3.6
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count104
+\float@exts=\toks24
+\float@box=\box32
+\@float@everytoks=\toks25
+\@floatcapt=\box33
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 144.
+)
+\everycr=\toks26
+\minrowclearance=\skip56
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tabu\tabu.sty"
+Package: tabu 2011/02/26 v2.8 - flexible LaTeX tabulars (FC)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\varwidth.sty"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box34
+\sift@deathcycles=\count105
+\@vwid@loff=\dimen137
+\@vwid@roff=\dimen138
+)
+\c@taburow=\count106
+\tabu@nbcols=\count107
+\tabu@cnt=\count108
+\tabu@Xcol=\count109
+\tabu@alloc=\count110
+\tabu@nested=\count111
+\tabu@target=\dimen139
+\tabu@spreadtarget=\dimen140
+\tabu@naturalX=\dimen141
+\tabucolX=\dimen142
+\tabu@Xsum=\dimen143
+\extrarowdepth=\dimen144
+\abovetabulinesep=\dimen145
+\belowtabulinesep=\dimen146
+\tabustrutrule=\dimen147
+\tabu@thebody=\toks27
+\tabu@footnotes=\toks28
+\tabu@box=\box35
+\tabu@arstrutbox=\box36
+\tabu@hleads=\box37
+\tabu@vleads=\box38
+\tabu@cellskip=\skip57
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\threeparttable\threeparttable.s
+ty"
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box39
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\threeparttablex\threeparttablex.s
+ty"
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\environ\environ.sty"
+Package: environ 2014/05/04 v0.3 A new way to define environments
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\trimspaces\trimspaces.sty"
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks29
+)
+\TPTL@width=\skip58
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ulem\ulem.sty"
+\UL@box=\box40
+\UL@hyphenbox=\box41
+\UL@skip=\skip59
+\UL@hook=\toks30
+\UL@height=\dimen148
+\UL@pe=\count112
+\UL@pixel=\dimen149
+\ULC@box=\box42
+Package: ulem 2012/05/18
+\ULdepth=\dimen150
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\makecell\makecell.sty"
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen151
+\c@nlinenum=\count113
+\TeXr@lab=\toks31
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2016/05/21 v6.83p Hypertext links for LaTeX
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
@@ -653,15 +808,15 @@ Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen118
-\Hy@linkcounter=\count94
-\Hy@pagecounter=\count95
+\@linkdim=\dimen152
+\Hy@linkcounter=\count114
+\Hy@pagecounter=\count115
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2016/05/21 v6.83p Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count96
+\Hy@SavedSpaceFactor=\count116
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
@@ -679,16 +834,16 @@ Package hyperref Info: Plain pages OFF on input line 4501.
 Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count97
+\c@Hy@tempcnt=\count117
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen119
-\Fld@menulength=\count98
-\Field@Width=\dimen120
-\Fld@charsize=\dimen121
+\XeTeXLinkMargin=\dimen153
+\Fld@menulength=\count118
+\Field@Width=\dimen154
+\Fld@charsize=\dimen155
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
@@ -698,126 +853,118 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count99
-\c@Item=\count100
-\c@Hfootnote=\count101
+\Hy@abspage=\count119
+\c@Item=\count120
+\c@Hfootnote=\count121
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2016/05/21 v6.83p Hyperref driver for pdfTeX
-\Fld@listcount=\count102
-\c@bookmark@seq@number=\count103
+\Fld@listcount=\count122
+\c@bookmark@seq@number=\count123
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip50
-) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
-Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+\Hy@SectionHShift=\skip60
 )
-Package color Info: Driver file: pdftex.def on input line 144.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
-File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
-))
-Package hyperref Info: Option `breaklinks' set `true' on input line 114.
+Package hyperref Info: Option `breaklinks' set `true' on input line 131.
 
 Package hyperref Warning: Option `bookmarks' has already been used,
-(hyperref)                setting the option has no effect on input line 114.
+(hyperref)                setting the option has no effect on input line 131.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 114.
+Package hyperref Info: Option `colorlinks' set `true' on input line 131.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\placeins\placeins.sty"
 Package: placeins 2005/04/18  v 2.2
 )
-\cslhangindent=\skip51
-\csllabelwidth=\skip52
+\cslhangindent=\skip61
+\csllabelwidth=\skip62
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count104
-\calc@Bcount=\count105
-\calc@Adimen=\dimen122
-\calc@Bdimen=\dimen123
-\calc@Askip=\skip53
-\calc@Bskip=\skip54
+\calc@Acount=\count124
+\calc@Bcount=\count125
+\calc@Adimen=\dimen156
+\calc@Bdimen=\dimen157
+\calc@Askip=\skip63
+\calc@Bskip=\skip64
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count106
-\calc@Cskip=\skip55
+\calc@Ccount=\count126
+\calc@Cskip=\skip65
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks21
+\@emptytoks=\toks32
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2016/03/10 v2.15b AMS math features
-\@mathmargin=\skip56
+\@mathmargin=\skip66
 For additional information on amsmath, use the `?' option.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks22
-\ex@=\dimen124
+\@emptytoks=\toks33
+\ex@=\dimen158
 )) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen125
+\pmbraise@=\dimen159
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count107
+\inf@bad=\count127
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count108
-\leftroot@=\count109
+\uproot@=\count128
+\leftroot@=\count129
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count110
-\DOTSCASE@=\count111
+\classnum@=\count130
+\DOTSCASE@=\count131
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box27
-\strutbox@=\box28
-\big@size=\dimen126
+\Mathstrutbox@=\box43
+\strutbox@=\box44
+\big@size=\dimen160
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count112
-\c@MaxMatrixCols=\count113
+\macc@depth=\count132
+\c@MaxMatrixCols=\count133
 \dotsspace@=\muskip11
-\c@parentequation=\count114
-\dspbrk@lvl=\count115
-\tag@help=\toks23
-\row@=\count116
-\column@=\count117
-\maxfields@=\count118
-\andhelp@=\toks24
-\eqnshift@=\dimen127
-\alignsep@=\dimen128
-\tagshift@=\dimen129
-\tagwidth@=\dimen130
-\totwidth@=\dimen131
-\lineht@=\dimen132
-\@envbody=\toks25
-\multlinegap=\skip57
-\multlinetaggap=\skip58
-\mathdisplay@stack=\toks26
+\c@parentequation=\count134
+\dspbrk@lvl=\count135
+\tag@help=\toks34
+\row@=\count136
+\column@=\count137
+\maxfields@=\count138
+\andhelp@=\toks35
+\eqnshift@=\dimen161
+\alignsep@=\dimen162
+\tagshift@=\dimen163
+\tagwidth@=\dimen164
+\totwidth@=\dimen165
+\lineht@=\dimen166
+\@envbody=\toks36
+\multlinegap=\skip67
+\multlinetaggap=\skip68
+\mathdisplay@stack=\toks37
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
 )
 LaTeX Font Info:    Try loading font information for T1+Cochineal-TLF on input 
-line 158.
+line 175.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cochineal\t1cochineal-tlf.fd"
 File: T1Cochineal-TLF.fd 2016/01/19 (msharpe) Font definitions for T1/Cochineal
 -TLF.
 )
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 158.
+(Font)              scaled to size 12.0pt on input line 175.
 (01_draft.aux
 
 LaTeX Warning: Label `table:coefficients' multiply defined.
@@ -828,29 +975,29 @@ LaTeX Warning: Label `table:coefficients' multiply defined.
 )
 \openout1 = `01_draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 158.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 158.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 175.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 175.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 175.
+LaTeX Font Info:    ... okay on input line 175.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -885,21 +1032,21 @@ LaTeX Font Info:    ... okay on input line 158.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@mv@tabular=\count119
-\c@mv@boldtabular=\count120
+\c@mv@tabular=\count139
+\c@mv@boldtabular=\count140
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count121
-\scratchdimen=\dimen133
-\scratchbox=\box29
-\nofMPsegments=\count122
-\nofMParguments=\count123
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count124
-\MPscratchDim=\dimen134
-\MPnumerator=\count125
-\makeMPintoPDFobject=\count126
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count141
+\scratchdimen=\dimen167
+\scratchbox=\box45
+\nofMPsegments=\count142
+\nofMParguments=\count143
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count144
+\MPscratchDim=\dimen168
+\MPnumerator=\count145
+\makeMPintoPDFobject=\count146
+\everyMPtoPDFconversion=\toks39
 ) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
@@ -910,147 +1057,176 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box30
+\AtBeginShipoutBox=\box46
 
 Package hyperref Warning: Draft mode on.
 
-Package hyperref Info: Link coloring ON on input line 158.
+Package hyperref Info: Link coloring ON on input line 175.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count127
+\c@section@level=\count147
 )
-LaTeX Info: Redefining \ref on input line 158.
-LaTeX Info: Redefining \pageref on input line 158.
-LaTeX Info: Redefining \nameref on input line 158.
+LaTeX Info: Redefining \ref on input line 175.
+LaTeX Info: Redefining \pageref on input line 175.
+LaTeX Info: Redefining \nameref on input line 175.
+LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
+(Font)              scaled to size 18.0pt on input line 184.
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 174.
+(Font)              scaled to size 12.0pt on input line 210.
+LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 232.
 [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 249.
-[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] <figs/unnamed-chunk-1.pdf, id=42
-, 289.08pt x 289.08pt>
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
+
+] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] <figs/unn
+amed-chunk-1.pdf, id=58, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-1.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-1.pdf used on input line 694.
+Package pdftex.def Info: figs/unnamed-chunk-1.pdf used on input line 928.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-<figs/unnamed-chunk-2.pdf, id=43, 289.08pt x 289.08pt>
+<figs/unnamed-chunk-2.pdf, id=59, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-2.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-2.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-2.pdf used on input line 712.
+Package pdftex.def Info: figs/unnamed-chunk-2.pdf used on input line 946.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
 
-Overfull \hbox (20.24002pt too wide) in paragraph at lines 719--726
+Overfull \hbox (20.24002pt too wide) in paragraph at lines 953--960
 []\T1/Cochineal-TLF/m/n/12 These pre-dic-tions are straight-for-ward, but test-
 ing them em-pir-i-cally is not. Need is a multi-dimensional
  []
 
-[13 <./figs/unnamed-chunk-1.pdf>] [14 <./figs/unnamed-chunk-2.pdf>] <figs/unnam
-ed-chunk-3.pdf, id=63, 722.7pt x 289.08pt>
-File: figs/unnamed-chunk-3.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-3.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-3.pdf used on input line 750.
-(pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
-LaTeX Font Info:    Try loading font information for U+msa on input line 763.
+[18 <./figs/unnamed-chunk-1.pdf>] [19 <./figs/unnamed-chunk-2.pdf>]
+LaTeX Font Info:    Try loading font information for U+msa on input line 991.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 763.
+LaTeX Font Info:    Try loading font information for U+msb on input line 991.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 771.
+(Font)              scaled to size 8.0pt on input line 992.
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 771.
-LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 771.
-[15] [16 <./figs/unnamed-chunk-3.pdf>]
-LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 792.
-[17] [18] <figs/unnamed-chunk-4.pdf, id=91, 722.7pt x 289.08pt>
-File: figs/unnamed-chunk-4.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-4.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-4.pdf used on input line 911.
-(pdftex.def)             Requested size: 469.76045pt x 187.90417pt.
-[19 <./figs/unnamed-chunk-4.pdf>] <figs/unnamed-chunk-6.pdf, id=103, 361.35pt x
- 271.0125pt>
-File: figs/unnamed-chunk-6.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-6.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-6.pdf used on input line 954.
+(Font)              scaled to size 6.0pt on input line 992.
+[20] [21] <figs/unnamed-chunk-5.pdf, id=90, 361.35pt x 271.0125pt>
+File: figs/unnamed-chunk-5.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-5.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-5.pdf used on input line 1074.
 (pdftex.def)             Requested size: 361.34912pt x 271.01183pt.
-[20] [21 <./figs/unnamed-chunk-6.pdf>] [22] [23]
+[22 <./figs/unnamed-chunk-5.pdf>] [23] [24] [25]
 LaTeX Font Info:    Try loading font information for TS1+Cochineal-TLF on input
- line 1095.
+ line 1221.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cochineal\ts1cochineal-tlf.fd"
 File: TS1Cochineal-TLF.fd 2016/01/19 (msharpe) Font definitions for TS1/Cochine
 al-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Cochineal-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 1095.
-[24]
-Overfull \hbox (2.71501pt too wide) in paragraph at lines 1170--1182
+(Font)              scaled to size 12.0pt on input line 1221.
+LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 1237.
+LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 1237.
+[26] [27] [28]
+Overfull \hbox (2.71501pt too wide) in paragraph at lines 1369--1381
 []\T1/Cochineal-TLF/m/n/12 The first and sec-ond mea-sures were taken from CEPI
 I. Dis-tance comes from CEPII's grav-ity dataset
  []
 
-[25] [26]
+[29] [30]
 LaTeX Font Info:    Font shape `T1/Cochineal-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 1262.
-[27] <figs/unnamed-chunk-7.pdf, id=135, 578.16pt x 289.08pt>
+(Font)              scaled to size 10.0pt on input line 1461.
+<figs/unnamed-chunk-6.pdf, id=125, 578.16pt x 289.08pt>
+File: figs/unnamed-chunk-6.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-6.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-6.pdf used on input line 1477.
+(pdftex.def)             Requested size: 469.75385pt x 234.8769pt.
+[31] <figs/unnamed-chunk-7.pdf, id=130, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-7.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-7.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-7.pdf used on input line 1278.
-(pdftex.def)             Requested size: 469.75385pt x 234.8769pt.
-[28 <./figs/unnamed-chunk-7.pdf>] <figs/unnamed-chunk-8.pdf, id=144, 289.08pt x
- 289.08pt>
+Package pdftex.def Info: figs/unnamed-chunk-7.pdf used on input line 1494.
+(pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
+<figs/unnamed-chunk-8.pdf, id=131, 289.08pt x 289.08pt>
 File: figs/unnamed-chunk-8.pdf Graphic file (type pdf)
 <use figs/unnamed-chunk-8.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-8.pdf used on input line 1295.
+Package pdftex.def Info: figs/unnamed-chunk-8.pdf used on input line 1507.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-<figs/unnamed-chunk-9.pdf, id=145, 289.08pt x 289.08pt>
-File: figs/unnamed-chunk-9.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-9.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-9.pdf used on input line 1308.
-(pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-[29 <./figs/unnamed-chunk-8.pdf>] [30 <./figs/unnamed-chunk-9.pdf>] [31] [32] [
-33] [34] <figs/unnamed-chunk-13.pdf, id=178, 289.08pt x 325.215pt>
-File: figs/unnamed-chunk-13.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-13.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-13.pdf used on input line 1529.
+[32 <./figs/unnamed-chunk-6.pdf>] [33 <./figs/unnamed-chunk-7.pdf> <./figs/unna
+med-chunk-8.pdf>] [34] [35] [36] [37] [38] <figs/unnamed-chunk-12.pdf, id=172, 
+289.08pt x 325.215pt>
+File: figs/unnamed-chunk-12.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-12.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-12.pdf used on input line 1745.
 (pdftex.def)             Requested size: 289.09251pt x 325.22908pt.
-[35 <./figs/unnamed-chunk-13.pdf>] <figs/unnamed-chunk-16.pdf, id=189, 289.08pt
- x 325.215pt>
-File: figs/unnamed-chunk-16.pdf Graphic file (type pdf)
-<use figs/unnamed-chunk-16.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-16.pdf used on input line 1616.
+[39 <./figs/unnamed-chunk-12.pdf>] [40] <figs/unnamed-chunk-15.pdf, id=186, 289
+.08pt x 325.215pt>
+File: figs/unnamed-chunk-15.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-15.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-15.pdf used on input line 1835.
 (pdftex.def)             Requested size: 289.09251pt x 325.22908pt.
-[36] [37] [38 <./figs/unnamed-chunk-16.pdf>] [39] [40] [41
+[41 <./figs/unnamed-chunk-15.pdf>] <../pca_results.png, id=197, 289.08pt x 325.
+215pt>
+File: ../pca_results.png Graphic file (type png)
+<use ../pca_results.png>
+Package pdftex.def Info: ../pca_results.png used on input line 1868.
+(pdftex.def)             Requested size: 289.10133pt x 325.23901pt.
+<../mfa_results.png, id=198, 289.08pt x 325.215pt>
+File: ../mfa_results.png Graphic file (type png)
+<use ../mfa_results.png>
+Package pdftex.def Info: ../mfa_results.png used on input line 1877.
+(pdftex.def)             Requested size: 289.10133pt x 325.23901pt.
+[42] [43 <../pca_results.png>] [44 <../mfa_results.png>]
+Overfull \hbox (8.44212pt too wide) in paragraph at lines 1936--1949
+\T1/Cochineal-TLF/m/n/12 The first idea---that lead donor-ship is a func-tion o
+f donor co-or-di-na-tion rather than co-op-er-a-tion failure---
+ []
 
-] [42] [43] [44
+[45] [46] [47] [48] [49] <figs/unnamed-chunk-18.pdf, id=225, 289.08pt x 325.215
+pt>
+File: figs/unnamed-chunk-18.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-18.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-18.pdf used on input line 2125.
+(pdftex.def)             Requested size: 289.09251pt x 325.22908pt.
+[50 <./figs/unnamed-chunk-18.pdf>]
+Overfull \hbox (4.41588pt too wide) in paragraph at lines 2140--2161
+\T1/Cochineal-TLF/m/n/12 Sum-ma-riz-ing the re-sults from sev-eral stud-ies, Dr
+eher, Lang, and Reins-berg (2024) con-clude that donors
+ []
 
-] [45] [46] [47]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2025.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2025.
+[51] <figs/unnamed-chunk-19.pdf, id=239, 433.62pt x 433.62pt>
+File: figs/unnamed-chunk-19.pdf Graphic file (type pdf)
+<use figs/unnamed-chunk-19.pdf>
+Package pdftex.def Info: figs/unnamed-chunk-19.pdf used on input line 2217.
+(pdftex.def)             Requested size: 433.63878pt x 433.63878pt.
+[52] [53 <./figs/unnamed-chunk-19.pdf>]
+Overfull \hbox (3.98546pt too wide) in paragraph at lines 2238--2252
+[]\T1/Cochineal-TLF/m/n/12 The iden-ti-ties of the lead donor in each of these 
+cases is not sur-pris-ing. The lead donor in Cameroon
+ []
+
+[54] [55] [56] [57] [58
+
+] [59] [60] [61] [62] [63]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2670.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2670.
 (01_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2025.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2025.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2670.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2670.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12158 strings out of 493335
- 171996 string characters out of 3136680
- 253663 words of memory out of 3000000
- 15511 multiletter control sequences out of 15000+200000
- 124905 words of font info for 58 fonts, out of 3000000 for 9000
+ 13799 strings out of 493335
+ 193674 string characters out of 3136680
+ 291009 words of memory out of 3000000
+ 17084 multiletter control sequences out of 15000+200000
+ 139214 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,36p,804b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,12n,36p,804b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cochineal/coch_wpmcrv.enc}
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cochineal/coch_hl6u4r.enc}{C
 :/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cochineal/coch_ykcvhy.enc}<C:/
@@ -1064,11 +1240,10 @@ pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 01_draft.pdf (47 pages, 379149 bytes).
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on 01_draft.pdf (63 pages, 640541 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
+ 325 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
