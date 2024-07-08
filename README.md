@@ -1,5 +1,7 @@
 # Replication Files for "Elusive Collaboration? The Determinants of Lead Donorship in International Development"
 
+You can access the article (open access) from *The Review of International Organizations* website here: https://link.springer.com/article/10.1007/s11558-024-09555-2
+
 To reproduce the results in the manuscript, you will need to download the replication dataset ([final_data.rds](https://github.com/milesdwilliams15/lead-donorship/blob/main/final_data.rds)) and use the .R script file that runs all the code for analyses, figures, and tables that appear in the paper ([01_full_replication_code.R](https://github.com/milesdwilliams15/lead-donorship/blob/main/02_code/01_full_replication_code.R)). The analysis was performed using R version 4.2.1 and using the following packages and versions:
 
 ```
